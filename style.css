@@ -482,21 +482,27 @@ i {
 	--python1:      rgba(228, 242, 255, 1);
 	--python2:      rgba(2, 119, 189, 0.2);
 	--python3:      rgba(2, 119, 189, 1);
+	--python4:      rgba(2, 119, 189, 0.35);
 	--robo1:        rgba(250, 249, 240, 1);
 	--robo2:        rgba(69, 90, 100, 0.2);
 	--robo3:        rgba(69, 90, 100, 1);
+	--robo4:        rgba(69, 90, 100, 0.35);
 	--treeDmax1:    rgba(240, 249, 250, 1);
 	--treeDmax2:    rgba(0, 131, 143, 0.2);
 	--treeDmax3:    rgba(0, 131, 143, 1);
+	--treeDmax4:    rgba(0, 131, 143, 0.35);
 	--Csharp1:      rgba(240, 240, 250, 1);
 	--Csharp2:      rgba(150, 85, 245, 0.2);
 	--Csharp3:      rgba(150, 85, 245, 1);
+	--Csharp4:      rgba(150, 85, 245, 0.35);
 	--android1:     rgba(240, 250, 240, 1);
 	--android2:     rgba(124, 179, 66, 0.2);
 	--android3:     rgba(124, 179, 66, 1);
+	--android4:     rgba(124, 179, 66, 0.35);
 	--twoD1:        rgba(250, 240, 245, 1);
 	--twoD2:        rgba(198, 13, 13, 0.2);
 	--twoD3:        rgba(198, 13, 13, 1);
+	--twoD4:        rgba(198, 13, 13, 0.35);
 }
 
 .courses__inner {
@@ -550,6 +556,11 @@ i {
 	border-radius:      40px;
 	width:              calc((100% - 3rem * 2) * 0.33333);
 	text-align:         center;
+	transition: all .3s ease;
+}
+
+.courses__card:hover {
+	transform: scale(1.05);
 }
 
 .courses__card>*:not(:last-child) {
@@ -595,7 +606,7 @@ i {
 /* Python */
 .c__python {
 	background-color:    var(--python1);
-	box-shadow:          0 0 50px var(--python2);
+	box-shadow:          0 0 50px var(--python4);
 }
 
 .c__python button:first-child {
@@ -618,7 +629,7 @@ i {
 /* Robo */
 .c__robo {
 	background-color:    var(--robo1);
-	box-shadow:          0 0 50px var(--robo2);
+	box-shadow:          0 0 50px var(--robo4);
 }
 
 .c__robo button:first-child {
@@ -641,7 +652,7 @@ i {
 /* 3D */
 .c__3d {
 	background-color:    var(--treeDmax1);
-	box-shadow:          0 0 50px var(--reeDmax2);
+	box-shadow:          0 0 50px var(--reeDmax4);
 }
 
 .c__3d button:first-child {
@@ -664,7 +675,7 @@ i {
 /* C# */
 .c__sharp {
 	background-color:    var(--Csharp1);
-	box-shadow:          0 0 50px var(--Csharp2);
+	box-shadow:          0 0 50px var(--Csharp4);
 }
 
 .c__sharp button:first-child {
@@ -687,7 +698,7 @@ i {
 /* Android */
 .c__android {
 	background-color:    var(--android1);
-	box-shadow:          0 0 50px var(--android2);
+	box-shadow:          0 0 50px var(--android4);
 }
 
 .c__android button:first-child {
@@ -710,7 +721,7 @@ i {
 /* 2D */
 .c__2d {
 	background-color:    var(--twoD1);
-	box-shadow:          0 0 50px var(--twoD2);
+	box-shadow:          0 0 50px var(--twoD4);
 }
 
 .c__2d button:first-child {
