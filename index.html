@@ -10,64 +10,39 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="shortcut icon" href="media/logo_small.svg" type="image/x-icon">
     <title>ЦДОД</title>
 </head>
 
 <body>
+
     <header class="header">
-        <img src="media/logo.svg" alt="">
-        <div class="header__btns">
-            <a href="#" class="header__btn">О НАС</a>
-            <a href="#" class="header__btn">КОМАНДА</a>
-            <a href="#" class="header__btn">КУРСЫ</a>
-            <a href="#" class="header__btn">ВИДЕО</a>
-            <a href="#" class="header__btn">КОНТАКТЫ</a>
-            <a href="#" class="header__btn">FAQ</a>
+        <a href="">
+            <img src="media/logo.svg" alt="" class="header__logo">
+        </a>
+
+
+        <div class="header__nav">
+            <a href="#">О НАС</a>
+            <a href="#">КОМАНДА</a>
+            <a href="#">КУРСЫ</a>
+            <a href="#">ВИДЕО</a>
+            <a href="#">КОНТАКТЫ</a>
+            <a href="#">FAQ</a>
         </div>
-        <div class="header__auth">
-            <span class="icon-login header__auth__loginico"></span>
-            <span class="header__auth__btn">
-                <span style="text-decoration: underline;">В</span>ойти
-            </span>
-        </div>
+
+        <button class="button header__auth">
+            <i class="icon-login"></i>
+            <span>Войти</span>
+        </button>
+
+        <button class="header__menu">
+            <i class="icon-menu"></i>
+        </button>
+
     </header>
 
-    <section class="mainslide">
-        <div class="container">
-            <div class="mainslide__left">
-                <h1 class="main__title"><span>Ц</span>ентр
-                    <span>Д</span>ополнительного
-                    <br>
-                    <span>О</span>бразования
-                    <span>Д</span>етей
-                </h1>
-                <p class="main__desc">при кафедре САПРиПК <br> и ЦМИТ «ЛЮКС», ВолгГТУ</p>
-                <p class="main__slog">Изобретай будущее с нами!</p>
-                <!-- <img src="media/MainSlideText.svg" alt="">
-                <img src="media/MainSlideText_smalldevice.svg" alt=""> -->
-                <button class="mainslide__btn">Записаться<span>Записаться</span></button>
-            </div>
-            <img class="mainslide__right" src="media/main_classroom.svg" alt="">
-        </div>
-    </section>
-
-    <section class="whoweare">
-        <div class="container">
-            <img src="media/who_are_we.svg" alt="">
-            <div class="whoweare__text">
-                <h2>Что такое <span>ЦДОД</span>?</h2>
-                <p>Мы предоставляем доступ молодым учёным и школьникам,
-                    начиная с первого класса, к самым современным
-                    инструментам и подходам для производства сложных систем с использованием аддитивных технологий.</p>
-                <p>Наша основная цель - пробудить интерес детей и молодежи к естественным наукам и современным
-                    технологиям,
-                    научно-исследовательской и инновационной деятельности.</p>
-                <p>Вас ждут творческая атмосфера, командная работа и дружный коллектив, индивидуальный подход,
-                    выстраивание
-                    образовательной траектории детей, а также участие в творческих и научно-технических конкурсах!</p>
-            </div>
-        </div>
-    </section>
+    <script src="script.js"></script>
 </body>
 
 </html>
