@@ -41,8 +41,6 @@ for (var i = 0; i < spo__head.length; i++) {
     spo__head[i].addEventListener('click', function () {
         // this.parentNode.classList.toggle('accordion__active');
 
-
-
         if (this.parentNode.classList.contains('accordion__active')) {
             this.parentNode.classList.remove('accordion__active');
         }
@@ -52,10 +50,6 @@ for (var i = 0; i < spo__head.length; i++) {
             }
             this.parentNode.classList.add('accordion__active');
         }
-
-
-
-
     })
 }
 

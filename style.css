@@ -407,7 +407,7 @@ i {
 
 .whoweare__inner {
 	display       : flex;
-	align-items   : end;
+	align-items   : flex-endЁ;
 }
 
 .whoweare__img {}
@@ -840,10 +840,9 @@ i {
 }
 
 .team__cards {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 3rem;
+	display           : flex;
+	justify-content   : center;
+	gap               : 3rem;
 }
 
 .team__card {
@@ -1000,11 +999,11 @@ i {
 }
 
 .contacts__inner {
-	display                                                                                : grid;
-	grid-template-columns                                                                  : 1fr 1fr;
-	grid-column-gap                                                                        : 5rem;
-	/* justify-items                                                                       : center; */
-	align-items                                                                            : center;
+	display                                                                                   : grid;
+	grid-template-columns                                                                     : 1fr 1fr;
+	grid-column-gap                                                                           : 5rem;
+	/* justify-items                                                                          : center; */
+	align-items                                                                               : center;
 }
 
 .contacts__inner iframe {
