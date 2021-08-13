@@ -4,6 +4,9 @@
 	--gr-text-color            : #2b2e36;
 	--line-transp-blue-color   : #bdcfe4;
 	--blue                     : #57BDDB;
+	--vk-color                 : #2787F5;
+	--dark-color               : #2C2C2C;
+	--card-shadow              : 0px 10px 50px rgba(0, 0, 0, 0.1);
 	--opsans-font              : "Open Sans", sans-serif;
 	--rubik-font               : "Rubik", sans-serif;
 }
@@ -15,6 +18,7 @@ html {
 	color              : var(--gr-text-color);
 	font-size          : 10px;
 	line-height        : 1.3;
+	user-select        : none;
 }
 
 h1 {
@@ -48,16 +52,18 @@ p {
 /* BUTTON 1 */
 
 .button {
-	position           : relative;
-	display            : flex;
-	align-items        : center;
-	overflow           : hidden;
-	background-color   : #007AA926;
-	padding            : 8px 25px;
-	border-radius      : 20px;
-	min-width          : max-content;
-	color              : var(--logo-color);
-	transition         : all .2s linear;
+	--button_bg_color     : #007AA926;
+	--button_text_color   : var(--logo-color);
+	position              : relative;
+	display               : flex;
+	align-items           : center;
+	overflow              : hidden;
+	background-color      : var(--button_bg_color);
+	padding               : 8px 25px;
+	border-radius         : 20px;
+	min-width             : max-content;
+	color                 : var(--button_text_color);
+	transition            : all .2s linear;
 }
 
 .button:hover {
@@ -67,7 +73,7 @@ p {
 .button::before {
 	content            : '';
 	position           : absolute;
-	background-color   : var(--logo-color);
+	background-color   : var(--button_text_color);
 	border-radius      : 100%;
 	left               : 50%;
 	bottom             : -100%;
@@ -112,63 +118,76 @@ p {
 
 /* SVG */
 @font-face {
-	font-family: 'icofont';
-	src:  url('fonts/icofont.eot?8829ea');
-	src:  url('fonts/icofont.eot?8829ea#iefix') format('embedded-opentype'),
-	  url('fonts/icofont.ttf?8829ea') format('truetype'),
-	  url('fonts/icofont.woff?8829ea') format('woff'),
-	  url('fonts/icofont.svg?8829ea#icofont') format('svg');
-	font-weight: normal;
-	font-style: normal;
-	font-display: block;
-  }
-  
-  i {
+	font-family   : 'icofont';
+	src           : url('fonts/icofont.eot?rln90c');
+	src           : url('fonts/icofont.eot?rln90c#iefix') format('embedded-opentype'),
+		url('fonts/icofont.ttf?rln90c') format('truetype'),
+		url('fonts/icofont.woff?rln90c') format('woff'),
+		url('fonts/icofont.svg?rln90c#icofont') format('svg');
+	font-weight    : normal;
+	font-style     : normal;
+	font-display   : block;
+}
+
+i {
 	/* use !important to prevent issues with browser extensions that change fonts */
-	font-family: 'icofont' !important;
-	speak: never;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-  
+	font-family      : 'icofont' !important;
+	speak            : never;
+	font-style       : normal;
+	font-weight      : normal;
+	font-variant     : normal;
+	text-transform   : none;
+	line-height      : 1;
+
 	/* Better Font Rendering =========== */
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-  }
-  
-  .icon-attach:before {
-	content: "\e909";
-  }
-  .icon-open_close:before {
-	content: "\e908";
-  }
-  .icon-vec1:before {
-	content: "\e903";
-  }
-  .icon-vec2:before {
-	content: "\e904";
-  }
-  .icon-vec3:before {
-	content: "\e905";
-  }
-  .icon-vec4:before {
-	content: "\e906";
-  }
-  .icon-vec5:before {
-	content: "\e907";
-  }
-  .icon-menu:before {
-	content: "\e900";
-  }
-  .icon-logout:before {
-	content: "\e901";
-  }
-  .icon-login:before {
-	content: "\e902";
-  }
-  
+	-webkit-font-smoothing    : antialiased;
+	-moz-osx-font-smoothing   : grayscale;
+}
+
+.icon-vk:before {
+	content   : "\e90a";
+}
+
+.icon-attach:before {
+	content   : "\e909";
+}
+
+.icon-open_close:before {
+	content   : "\e908";
+}
+
+.icon-vec1:before {
+	content   : "\e903";
+}
+
+.icon-vec2:before {
+	content   : "\e904";
+}
+
+.icon-vec3:before {
+	content   : "\e905";
+}
+
+.icon-vec4:before {
+	content   : "\e906";
+}
+
+.icon-vec5:before {
+	content   : "\e907";
+}
+
+.icon-menu:before {
+	content   : "\e900";
+}
+
+.icon-logout:before {
+	content   : "\e901";
+}
+
+.icon-login:before {
+	content   : "\e902";
+}
+
 
 
 
@@ -801,6 +820,58 @@ p {
 
 
 
+/* TEAM */
+
+.team {
+	background-color   : white;
+}
+
+.team__inner {
+	display          : flex;
+	flex-direction   : column;
+	align-items      : center;
+	gap              : 3rem;
+}
+
+.team__inner>p {
+	text-indent   : 30px;
+	text-align    : justify;
+	width         : 75%;
+}
+
+.team__cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 3rem;
+}
+
+.team__card {
+	width           : min-content;
+	padding         : 2rem;
+	box-shadow      : var(--card-shadow);
+	border-radius   : 4rem;
+	text-align      : center;
+}
+
+.team__card>*:not(:last-child) {
+	margin-bottom   : 1rem;
+}
+
+.team__card img {
+	border-radius   : 6rem;
+	width           : 13.02083333333333vw;
+	height          : 13.02083333333333vw;
+}
+
+.team__card>p:nth-child(2) {
+	font-weight   : 700;
+}
+
+.team__card>p:nth-child(3) {
+	font-size   : 2rem;
+}
+
 
 
 
@@ -818,6 +889,12 @@ p {
 	flex-direction   : column;
 	align-items      : center;
 	gap              : 3rem;
+}
+
+.faqq__contents {
+	display       : flex;
+	gap           : 5rem;
+	align-items   : center;
 }
 
 .faqq__accordions {
@@ -840,7 +917,7 @@ p {
 }
 
 .accordion__title {
-	font-weight   : 500;
+	font-weight   : 600;
 }
 
 .accordion__content {
@@ -852,6 +929,7 @@ p {
 	text-align    : justify;
 	text-indent   : 30px;
 	transition    : all .3s ease;
+	user-select   : text;
 }
 
 .accordion__line {
@@ -873,7 +951,7 @@ p {
 
 
 .accordion__active .accordion__head>img {
-	transform   : rotate(45deg);
+	transform   : rotate(225deg);
 }
 
 .accordion__active .accordion__content {
@@ -889,6 +967,96 @@ p {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CONTACTS */
+
+.contacts {
+	background-color   : white;
+}
+
+.contacts__inner {
+	display                                                                                : grid;
+	grid-template-columns                                                                  : 1fr 1fr;
+	grid-column-gap                                                                        : 5rem;
+	/* justify-items                                                                       : center; */
+	align-items                                                                            : center;
+}
+
+.contacts__inner iframe {
+	border-radius   : 20px;
+}
+
+.contacts__text {
+	display          : flex;
+	flex-direction   : column;
+	gap              : 2rem;
+	user-select      : text;
+}
+
+.contacts__buttons {
+	display   : flex;
+	gap       : 2rem;
+}
+
+.contacts__buttons button {
+	font-size             : 2.4rem;
+	gap                   : 1rem;
+	--button_bg_color     : rgba(39, 135, 245, 0.2);
+	--button_text_color   : var(--vk-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+
+footer {
+	background-color   : var(--dark-color);
+	color              : white;
+	text-align         : center;
+}
+
+footer p:nth-child(1) {
+	font-size       : 2rem;
+	margin-bottom   : 2.5rem;
+}
+
+footer p:nth-child(2) {
+	font-size   : 1.8rem;
+}
 
 
 
@@ -942,4 +1110,14 @@ p {
 	.header__auth {
 		margin   : 0;
 	}
+}
+
+/* Блокировка кнопки входа */
+
+.header__auth {
+	/* display: none; */
+}
+
+.header__nav {
+	/* margin: 0 auto; */
 }
