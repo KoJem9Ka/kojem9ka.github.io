@@ -407,7 +407,7 @@ i {
 
 .whoweare__inner {
 	display       : flex;
-	align-items   : flex-endЁ;
+	align-items   : flex-end;
 }
 
 .whoweare__img {}
