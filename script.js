@@ -1,18 +1,29 @@
-var menubtn = document.querySelector('.header__menu');
+//Выезжающее меню
+// var menubtn = document.querySelector('.header__menu');
 
-console.log(menubtn);
-console.log(document.querySelector('header'));
+//Плавная навигация по сайту
+const scrollPos = () => window.pageYOffset || document.documentElement.scrollTop;
+let head_height = document.querySelector('.header').clientHeight;
+const anchors = document.querySelectorAll('a[href^="#"]');
 
+for (let anchor of anchors) {
+    anchor.addEventListener("click", function (event) {
+        event.preventDefault();
+        const blockID = anchor.getAttribute('href')
+        let block = document.getElementById(blockID.substr(1, blockID.length - 1)); //#hid2
+        let jmp = block.offsetTop;
 
+        console.log(block);
 
-// menubtn.addEventListener("click", function (event) {
+        // if (scrollPos() > block.offsetTop)
+        //     jmp = jmp - head_height;
 
-// });
-
-// window.addEventListener(`resize`, event => {
-
-
-// }, false);
+        window.scrollTo({
+            top: jmp - head_height,
+            behavior: 'smooth'
+        })
+    })
+}
 
 
 //Соотношение сторон 16:9 у видео с ютуба
