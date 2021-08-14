@@ -26,15 +26,39 @@ for (let anchor of anchors) {
 }
 
 
-//Соотношение сторон 16:9 у видео с ютуба
-let videos = document.querySelectorAll('.ytvideo')
+//Соотношение сторон 16:9
+let ratio16_9 = document.querySelectorAll('.ratio16_9'),
+    ratio3_2 = document.querySelectorAll('.ratio3_2')
+
+//выравнивание тексте к левому краю в We Do
+let we_do__items = document.querySelectorAll('.wedo__item>p');
 
 function newsize() {
-    for (elem of videos) {
+    //Соотношение сторон 16:9
+    for (elem of ratio16_9) {
         let widt = elem.clientWidth;
-        elem.setAttribute("height", widt * 9 / 16);
-        // elem.style.height = `${widt * 9 / 16}px`;
+        // elem.setAttribute("height", widt * 9 / 16);
+        elem.style.height = `${widt * 9 / 16}px`;
     }
+    //Соотношение сторон 3:2
+    for (elem of ratio3_2) {
+        let widt = elem.clientWidth;
+        // elem.setAttribute("height", widt * 9 / 16);
+        elem.style.height = `${widt * 2 / 3}px`;
+    }
+
+
+    //Соотношение сторон 3:2
+    //выравнивание тексте к левому краю в We Do
+    // for (item of we_do__items)
+    //     item.style.maxWidth = `none`,
+    //         item.style.minWidth = `none`
+    // let minn = Infinity;
+    // for (item of we_do__items)
+    //     minn = Math.min(minn, Math.floor(item.clientWidth));
+    // for (item of we_do__items)
+    //     item.style.maxWidth = `${minn}px`,
+    //         item.style.minWidth = `${minn}px`
 }
 
 newsize();
