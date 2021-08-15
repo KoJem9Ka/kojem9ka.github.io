@@ -13,11 +13,22 @@ for (let anchor of anchors) {
         let block = document.getElementById(blockID.substr(1, blockID.length - 1)); //#hid2
         let jmp = block.offsetTop;
 
-        console.log(block);
-
         // if (scrollPos() > block.offsetTop)
         //     jmp = jmp - head_height;
 
+        window.scrollTo({
+            top: jmp - head_height,
+            behavior: 'smooth'
+        })
+    })
+}
+
+let subscribe_button = document.querySelectorAll('.subscribe');
+for (elem of subscribe_button) {
+    elem.addEventListener("click", function (event) {
+        event.preventDefault();
+        let block = document.getElementById('contacts');
+        let jmp = block.offsetTop;
         window.scrollTo({
             top: jmp - head_height,
             behavior: 'smooth'

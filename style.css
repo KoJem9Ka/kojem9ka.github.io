@@ -53,6 +53,10 @@ img {
 	pointer-events   : none;
 }
 
+a {
+	color: var(--logo-color);
+}
+
 /* BUTTON 1 */
 
 .button {
@@ -586,8 +590,8 @@ i {
 	flex-direction    : column;
 	justify-content   : space-between;
 	align-items       : center;
-	padding           : 30px;
-	border-radius     : 40px;
+	padding           : 3rem;
+	border-radius     : 4rem;
 	width             : calc((100% - 3rem * 2) / 3);
 	text-align        : center;
 	transition        : all .3s ease;
