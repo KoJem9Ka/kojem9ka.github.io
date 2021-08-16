@@ -54,7 +54,7 @@ img {
 }
 
 a {
-	color: var(--logo-color);
+	color   : var(--logo-color);
 }
 
 /* BUTTON 1 */
@@ -62,20 +62,30 @@ a {
 .button {
 	--button_bg_color     : #007AA926;
 	--button_text_color   : var(--logo-color);
+	--button_rad          : 2rem;
 	position              : relative;
 	display               : flex;
 	align-items           : center;
 	overflow              : hidden;
 	background-color      : var(--button_bg_color);
-	padding               : 8px 25px;
-	border-radius         : 20px;
+	padding               : .8rem 2.5rem;
+	border-radius         : var(--button_rad);
 	min-width             : max-content;
 	color                 : var(--button_text_color);
 	transition            : color .2s linear;
 }
 
+.button svg {
+	transition   : all .3s ease;
+	fill         : var(--button_text_color);
+}
+
 .button:hover {
 	color   : white !important;
+}
+
+.button:hover svg {
+	fill   : white !important;
 }
 
 .button::before {
@@ -93,7 +103,7 @@ a {
 }
 
 .button:hover::before {
-	border-radius   : 20px;
+	border-radius   : var(--button_rad);
 	bottom          : 0;
 	width           : 100%;
 	height          : 100%;
@@ -110,8 +120,8 @@ a {
 	display            : flex;
 	align-items        : center;
 	background-color   : var(--logo-color);
-	padding            : 8px 25px;
-	border-radius      : 20px;
+	padding            : .8rem 2.5rem;
+	border-radius      : 2rem;
 	min-width          : max-content;
 	color              : white;
 	transition         : all .2s ease;
@@ -218,11 +228,11 @@ i {
 
 .container {
 	/* display:      block; */
-	margin             : 0 auto;
-	padding            : 50px 15px;
-	width              : calc(80% + 30px);
-	max-width          : 1566px;
-	/* box-shadow      : 1px 0 0 red, -1px 0 0 red; */
+	margin                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             : 0 auto;
+	padding                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            : 50px 15px;
+	width                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              : calc(80% + 30px);
+	max-width                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          : 1566px;
+	/* box-shadow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      : 1px 0 0 red, -1px 0 0 red; */
 }
 
 
@@ -253,7 +263,7 @@ i {
 	max-width          : 1536px;
 	font-size          : 1.8rem;
 	transform          : translateX(-50%);
-	z-index            : 1000;
+	z-index            : 900;
 }
 
 .header__nav>a:not(:last-child) {
@@ -337,15 +347,11 @@ i {
 	align-items      : center;
 	min-width        : max-content;
 	text-align       : center;
+	gap              : 4em;
 }
 
 .main__right {
 	width   : 35%;
-}
-
-.main__left>*:not(:last-child) {
-	/* margin-bottom   : 40px; */
-	margin-bottom   : calc(var(--section_size) * 4);
 }
 
 .main__line {
@@ -369,7 +375,7 @@ i {
 }
 
 .main__left>button {
-	font-size   : 3.6em;
+	font-size   : 4em;
 	max-width   : max-content;
 	animation   : main_butt_anim 5s infinite linear;
 }
@@ -422,19 +428,21 @@ i {
 }
 
 .whoweare__inner {
-	display       : flex;
-	align-items   : flex-end;
+	display           : flex;
+	align-items       : flex-end;
+	justify-content   : space-between;
+	gap               : 5rem;
 }
 
 .whoweare__img {
-	width   : 100%;
+	flex-grow   : 1;
+	width       : 35%;
 }
 
 .whoweare__text {
 	text-align    : justify;
-	text-indent   : 30px;
-	margin-left   : 50px;
-	min-width     : 700px;
+	text-indent   : 3rem;
+	width         : 65%;
 }
 
 .whoweare__text span {
@@ -934,6 +942,8 @@ i {
 .accordion__head img {
 	min-width    : 1em;
 	min-height   : 1em;
+	max-width    : 1em;
+	max-height   : 1em;
 	transition   : transform .3s ease;
 }
 
@@ -977,7 +987,7 @@ i {
 
 .accordion__active .accordion__content {
 	margin-top   : 2rem;
-	max-height   : 200px;
+	max-height   : 40rem;
 }
 
 
@@ -1092,6 +1102,244 @@ footer p:nth-child(2) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* COURSE INFO */
+
+.course_info {
+	vertical-align     : middle;
+	position           : fixed;
+	display            : none;
+	overflow           : hidden;
+	background-color   : rgba(0, 0, 0, 0.0);
+	width              : 100%;
+	height             : 0;
+	animation          : course_info__close .3s ease forwards;
+	transition         : opacity 1s ease, background-color 1s ease;
+	z-index            : 1000;
+}
+
+@keyframes course_info__close {
+	0% {
+		height             : 100%;
+		opacity            : 1;
+		background-color   : rgba(0, 0, 0, 0.8);
+	}
+
+	99% {
+		height             : 100%;
+		opacity            : 0;
+		background-color   : rgba(0, 0, 0, 0.0);
+	}
+
+	100% {
+		height   : 0%;
+	}
+}
+
+.course_info__scroll {
+	display      : flex;
+	overflow-y   : auto;
+	padding      : 5% 0 5% 0;
+	width        : 100%;
+}
+
+.course_info__card_in {
+	position           : relative;
+	background-color   : var(--main-bg-color);
+	margin             : auto;
+	padding            : 6rem;
+	border-radius      : 6rem;
+	width              : 60%;
+	max-width          : 1100px;
+	animation          : course_info__close_2 .3s ease forwards;
+	box-shadow         : 0 0 10rem rgba(0, 0, 0, 0.8);
+	user-select        : text;
+}
+
+@keyframes course_info__close_2 {
+	0% {
+		transform   : translateX(0);
+	}
+
+	99% {}
+
+	100% {
+		transform   : translateY(-15vh);
+	}
+}
+
+.course_info__close {
+	--button_rad          : 100rem;
+	--button_bg_color     : rgba(198, 13, 13, 0.1);
+	--button_text_color   : rgba(198, 13, 13, 1);
+	position              : absolute;
+	padding               : 1.5rem;
+	top                   : 2.5rem;
+	right                 : 2.5rem;
+}
+
+.course_info__close svg {
+	width    : 2.2rem;
+	height   : 2.2rem;
+}
+
+
+
+.course_info__card_in>*:not(:last-child) {
+	margin-bottom   : 3rem;
+}
+
+.course_info__header {
+	display           : flex;
+	align-items       : center;
+	gap               : 2rem;
+	justify-content   : center;
+}
+
+.course_info__header p {
+	font-size     : 3.8rem;
+	font-weight   : 700;
+	text-align    : center;
+	width         : 60%;
+}
+
+.course_info__header img {
+	width    : 15rem;
+	height   : 15rem;
+}
+
+.course_info__desc>p {
+	font-size     : 2rem;
+	text-align    : justify;
+	text-indent   : 3rem;
+}
+
+.course_info__section {
+	display       : flex;
+	align-items   : flex-start;
+	gap           : 2rem;
+
+}
+
+.course_info__section>img {
+	max-width    : 3rem;
+	min-width    : 3rem;
+	max-height   : 3rem;
+	min-height   : 3rem;
+}
+
+.course_info__section__content>*:not(:last-child) {
+	margin-bottom   : 1rem;
+}
+
+.course_info__section__title {
+	font-size     : 2.4rem;
+	font-weight   : 500;
+	line-height   : 3rem;
+}
+
+.course_info__section__content>p {
+	font-size     : 2rem;
+	text-align    : justify;
+	text-indent   : 3rem;
+}
+
+.course_info__section__content bold {
+	white-space   : nowrap;
+}
+
+.course_info__button {
+	display           : flex;
+	justify-content   : flex-end;
+	align-items       : center;
+	gap               : 4rem;
+	font-weight       : 700;
+}
+
+.course_info__button p {
+	font-size     : 3rem;
+	white-space   : nowrap;
+}
+
+.course_info__button button {
+	font-size       : 2.4rem;
+	border-radius   : 1.8rem;
+}
+
+html {
+	/* overflow   : hidden; */
+}
+
+
+
+
+
+
+.course_info.active {
+	animation   : course_info__open .5s ease forwards;
+	height      : 100%;
+}
+
+
+
+@keyframes course_info__open {
+	from {
+		opacity            : 0;
+		background-color   : rgba(0, 0, 0, 0.0);
+	}
+
+	to {
+		opacity            : 1;
+		background-color   : rgba(0, 0, 0, 0.8);
+	}
+}
+
+
+
+.course_info__card_in.active {
+	animation   : course_info__open_2 .5s ease forwards;
+}
+
+@keyframes course_info__open_2 {
+	from {
+		transform   : translateY(15vh);
+	}
+
+	to {
+		transform   : translateX(0);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* MEDIA */
 @media (max-width: 1920px) {
 	html {
@@ -1122,13 +1370,30 @@ footer p:nth-child(2) {
 
 }
 
-@media (max-width : 1100px) {
+@media (max-width    : 960px) {}
+
+@media (max-width : 770px) {
 	html {
 		font-size   : 1.5vw;
 	}
 
 	.container {
 		padding   : 4rem 15px;
+	}
+
+	/* COURSE INFO */
+
+	.course_info__scroll {
+		padding   : 2.5% 0 2.5% 0;
+	}
+
+	.course_info__card_in {
+		width    : 95%;
+		margin   : auto 2.5%;
+	}
+
+	.course_info__header p {
+		width   : auto;
 	}
 
 	/* HEADER */
@@ -1152,13 +1417,18 @@ footer p:nth-child(2) {
 	/* MAIN */
 	.main {
 		/* 12/1100*100 */
-		font-size        : 1.0909090909090911vw;
+		font-size        : 1.1vw;
 		flex-direction   : column-reverse;
 		gap              : 5em;
 	}
 
 	.main__right {
 		width   : 50%;
+	}
+
+	.main__desc,
+	.main__slog {
+		font-size   : 5.5em;
 	}
 
 	/* WHO WE ARE */
@@ -1173,14 +1443,13 @@ footer p:nth-child(2) {
 	}
 
 	.whoweare__text {
-		margin      : 0 0 2em 0;
+		width       : 100%;
 		min-width   : 0;
 	}
 
 	.whoweare__text>h2 {
 		text-indent   : 0;
-		width         : max-content;
-		margin        : 0 auto;
+		text-align    : center;
 	}
 
 	/* WE DO */
@@ -1214,7 +1483,7 @@ footer p:nth-child(2) {
 
 	.courses {
 		/* 7.5/396*100 */
-		--section_size   : 1.9vw;
+		--section_size   : 2.5vw;
 	}
 
 	.courses__cards {
@@ -1307,10 +1576,6 @@ footer p:nth-child(2) {
 
 
 }
-
-@media (max-width   : 960px) {}
-
-@media (max-width    : 770px) {}
 
 @media (max-width: 450px) {
 

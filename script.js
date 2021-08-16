@@ -27,12 +27,47 @@ let subscribe_button = document.querySelectorAll('.subscribe');
 for (elem of subscribe_button) {
     elem.addEventListener("click", function (event) {
         event.preventDefault();
-        let block = document.getElementById('contacts');
-        let jmp = block.offsetTop;
+        let block = document.getElementById('contacts').offsetTop;
         window.scrollTo({
-            top: jmp - head_height,
+            top: block - head_height,
             behavior: 'smooth'
         })
+    })
+}
+
+//Подробнее о курсе
+let course_info = document.querySelector('.course_info');
+let modal_windows = document.querySelectorAll(".course_info__card_in");
+
+let info_open_buttons = document.querySelectorAll(".info_open");
+
+let modal_subscribe_buttons = document.querySelectorAll(".course_info__button>button");
+let modal_close_buttons = document.querySelectorAll(".course_info__close,.subscribe_info");
+
+//Открыть подробнее
+for (let elem of info_open_buttons) {
+    elem.addEventListener('click', function () {
+
+        let modal_ID = elem.getAttribute('course');
+
+        document.querySelector('html').style.overflow = 'hidden';
+        course_info.classList.add('active');
+        document.querySelector(`.course_info__card_in.${modal_ID}`).classList.add('active');
+
+        course_info.style.display = 'flex'
+
+        console.log('open!');
+    })
+}
+
+//Закрыть подробнее
+for (elem of modal_close_buttons) {
+    elem.addEventListener('click', function () {
+        document.querySelector('html').style.overflow = 'unset';
+        course_info.classList.remove('active');
+        for (el of modal_windows)
+            el.classList.remove('active');
+        console.log('close!');
     })
 }
 
@@ -45,6 +80,8 @@ let ratio16_9 = document.querySelectorAll('.ratio16_9'),
 let we_do__items = document.querySelectorAll('.wedo__item>p');
 
 function newsize() {
+    // Обновление переменных
+    head_height = document.querySelector('.header').clientHeight;
     //Соотношение сторон 16:9
     for (elem of ratio16_9) {
         let widt = elem.clientWidth;
