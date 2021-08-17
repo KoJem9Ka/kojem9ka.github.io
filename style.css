@@ -11,7 +11,7 @@
 	--rubik-font               : "Rubik", sans-serif;
 }
 
-/* body, */
+body,
 html {
 	background-color   : var(--main-bg-color);
 	font-family        : var(--rubik-font);
@@ -228,11 +228,11 @@ i {
 
 .container {
 	/* display:      block; */
-	margin                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             : 0 auto;
-	padding                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            : 50px 15px;
-	width                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              : calc(80% + 30px);
-	max-width                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          : 1566px;
-	/* box-shadow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      : 1px 0 0 red, -1px 0 0 red; */
+	margin                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             : 0 auto;
+	padding                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            : 50px 15px;
+	width                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              : calc(80% + 30px);
+	max-width                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          : 1566px;
+	/* box-shadow                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      : 1px 0 0 red, -1px 0 0 red; */
 }
 
 
@@ -1114,72 +1114,46 @@ footer p:nth-child(2) {
 
 
 
-/* COURSE INFO */
+/* COURSE MODAL */
 
-.course_info {
-	vertical-align     : middle;
-	position           : fixed;
-	display            : none;
-	overflow           : hidden;
-	background-color   : rgba(0, 0, 0, 0.0);
-	width              : 100%;
-	height             : 0;
-	animation          : course_info__close .3s ease forwards;
-	transition         : opacity 1s ease, background-color 1s ease;
-	z-index            : 1000;
-}
-
-@keyframes course_info__close {
-	0% {
-		height             : 100%;
-		opacity            : 1;
-		background-color   : rgba(0, 0, 0, 0.8);
-	}
-
-	99% {
-		height             : 100%;
-		opacity            : 0;
-		background-color   : rgba(0, 0, 0, 0.0);
-	}
-
-	100% {
-		height   : 0%;
-	}
-}
-
-.course_info__scroll {
-	display      : flex;
+.course_modal {
+	visibility   : hidden;
+	position     : fixed;
 	overflow-y   : auto;
-	padding      : 5% 0 5% 0;
-	width        : 100%;
+	display      : flex;
+	padding      : 5rem;
+	opacity      : 1;
+	top          : 0;
+	right        : 0;
+	bottom       : 0;
+	left         : 0;
+	z-index      : 1000;
 }
 
-.course_info__card_in {
+.course_modal__inner {
+	height             : fit-content;
+	height             : -moz-fit-content;
 	position           : relative;
+	display            : flex;
+	flex-direction     : column;
+	gap                : 3rem;
 	background-color   : var(--main-bg-color);
 	margin             : auto;
 	padding            : 6rem;
-	border-radius      : 6rem;
+	border-radius      : 3rem;
 	width              : 60%;
 	max-width          : 1100px;
-	animation          : course_info__close_2 .3s ease forwards;
 	box-shadow         : 0 0 10rem rgba(0, 0, 0, 0.8);
 	user-select        : text;
 }
 
-@keyframes course_info__close_2 {
-	0% {
-		transform   : translateX(0);
-	}
 
-	99% {}
 
-	100% {
-		transform   : translateY(-15vh);
-	}
-}
 
-.course_info__close {
+
+
+
+.course_modal__close {
 	--button_rad          : 100rem;
 	--button_bg_color     : rgba(198, 13, 13, 0.1);
 	--button_text_color   : rgba(198, 13, 13, 1);
@@ -1189,137 +1163,185 @@ footer p:nth-child(2) {
 	right                 : 2.5rem;
 }
 
-.course_info__close svg {
+.course_modal__close svg {
 	width    : 2.2rem;
 	height   : 2.2rem;
 }
 
-
-
-.course_info__card_in>*:not(:last-child) {
-	margin-bottom   : 3rem;
-}
-
-.course_info__header {
+.course_modal__header {
 	display           : flex;
+	justify-content   : center;
 	align-items       : center;
 	gap               : 2rem;
-	justify-content   : center;
 }
 
-.course_info__header p {
+.course_modal__header p {
+	width         : 60%;
 	font-size     : 3.8rem;
 	font-weight   : 700;
 	text-align    : center;
-	width         : 60%;
 }
 
-.course_info__header img {
+.course_modal__header img {
 	width    : 15rem;
 	height   : 15rem;
 }
 
-.course_info__desc>p {
+.course_modal__desc>p {
 	font-size     : 2rem;
 	text-align    : justify;
 	text-indent   : 3rem;
 }
 
-.course_info__section {
+.course_modal__section {
 	display       : flex;
 	align-items   : flex-start;
 	gap           : 2rem;
-
 }
 
-.course_info__section>img {
-	max-width    : 3rem;
-	min-width    : 3rem;
-	max-height   : 3rem;
-	min-height   : 3rem;
+.course_modal__section>img {
+	width    : 3rem;
+	height   : 3rem;
 }
 
-.course_info__section__content>*:not(:last-child) {
-	margin-bottom   : 1rem;
+.course_modal__section__content {
+	display          : flex;
+	flex-direction   : column;
+	gap              : 1rem;
 }
 
-.course_info__section__title {
+.course_modal__section__title {
 	font-size     : 2.4rem;
 	font-weight   : 500;
 	line-height   : 3rem;
 }
 
-.course_info__section__content>p {
+.course_modal__section__content>p {
 	font-size     : 2rem;
 	text-align    : justify;
 	text-indent   : 3rem;
 }
 
-.course_info__section__content bold {
+.course_modal__section__content bold {
 	white-space   : nowrap;
 }
 
-.course_info__button {
+nowrap {
+	font-weight   : normal;
+	white-space   : nowrap;
+}
+
+.course_modal__button {
 	display           : flex;
 	justify-content   : flex-end;
 	align-items       : center;
-	gap               : 4rem;
-	font-weight       : 700;
+	gap               : 3rem;
 }
 
-.course_info__button p {
+.course_modal__button p {
 	font-size     : 3rem;
-	white-space   : nowrap;
+	font-weight   : 700;
+	text-align    : right;
 }
 
-.course_info__button button {
-	font-size       : 2.4rem;
+.course_modal__button span {
+	font-weight   : normal;
+	white-space   : normal;
+}
+
+.course_modal__button button {
 	border-radius   : 1.8rem;
-}
-
-html {
-	/* overflow   : hidden; */
+	font-size       : 2.4rem;
 }
 
 
 
 
-
-
-.course_info.active {
-	animation   : course_info__open .5s ease forwards;
-	height      : 100%;
-}
-
-
-
-@keyframes course_info__open {
+@keyframes fadeIn {
 	from {
-		opacity            : 0;
-		background-color   : rgba(0, 0, 0, 0.0);
+		background-color   : rgb(0, 0, 0, 0);
+		visibility         : hidden;
 	}
 
 	to {
-		opacity            : 1;
-		background-color   : rgba(0, 0, 0, 0.8);
+		background-color   : rgb(0, 0, 0, .77);
+		visibility         : visible;
 	}
 }
 
-
-
-.course_info__card_in.active {
-	animation   : course_info__open_2 .5s ease forwards;
-}
-
-@keyframes course_info__open_2 {
+@keyframes fadeOut {
 	from {
-		transform   : translateY(15vh);
+		background-color   : rgb(0, 0, 0, .77);
+		visibility         : visible;
 	}
 
 	to {
-		transform   : translateX(0);
+		background-color   : rgb(0, 0, 0, 0);
+		visibility         : hidden;
 	}
 }
+
+@keyframes slideIn {
+	from {
+		opacity     : 0;
+		transform   : translate(0, 50%);
+	}
+
+	to {
+		opacity     : 1;
+		transform   : translate(0, 0);
+	}
+}
+
+@keyframes slideOut {
+	from {
+		opacity     : 1;
+		transform   : translate(0, 0);
+	}
+
+	to {
+		opacity     : 0;
+		transform   : translate(0, -50%);
+	}
+}
+
+.course_modal,
+.course_modal__inner {
+	animation-duration          : .4s;
+	animation-timing-function   : ease;
+}
+
+.course_modal.show {
+	animation-name     : fadeIn;
+	visibility         : visible;
+	background-color   : rgb(0, 0, 0, .77);
+}
+
+.course_modal.hide {
+	animation-name     : fadeOut;
+	visibility         : hidden;
+	background-color   : rgb(0, 0, 0, 0);
+}
+
+.course_modal.show>.course_modal__inner {
+	animation-name   : slideIn;
+	opacity          : 1;
+	transform        : translate(0, 0);
+}
+
+.course_modal.hide>.course_modal__inner {
+	animation-name   : slideOut;
+	opacity          : 0;
+	transform        : translate(0, 50%);
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -1381,19 +1403,28 @@ html {
 		padding   : 4rem 15px;
 	}
 
-	/* COURSE INFO */
+	/* COURSE MODAL */
 
-	.course_info__scroll {
-		padding   : 2.5% 0 2.5% 0;
+	.course_modal {
+		padding          : 2rem;
+		padding-bottom   : 20rem;
 	}
 
-	.course_info__card_in {
-		width    : 95%;
-		margin   : auto 2.5%;
+	.course_modal__inner {
+		width   : 100%;
 	}
 
-	.course_info__header p {
-		width   : auto;
+	.course_modal__header p {
+		font-size   : 3rem;
+	}
+
+	.course_modal__header img {
+		width    : 10rem;
+		height   : 10rem;
+	}
+
+	.course_modal__button>p>br {
+		display   : none;
 	}
 
 	/* HEADER */
@@ -1483,7 +1514,7 @@ html {
 
 	.courses {
 		/* 7.5/396*100 */
-		--section_size   : 2.5vw;
+		--section_size   : 1.8vw;
 	}
 
 	.courses__cards {

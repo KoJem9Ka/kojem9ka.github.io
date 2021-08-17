@@ -36,40 +36,76 @@ for (elem of subscribe_button) {
 }
 
 //Подробнее о курсе
-let course_info = document.querySelector('.course_info');
-let modal_windows = document.querySelectorAll(".course_info__card_in");
 
-let info_open_buttons = document.querySelectorAll(".info_open");
+; (function () {
 
-let modal_subscribe_buttons = document.querySelectorAll(".course_info__button>button");
-let modal_close_buttons = document.querySelectorAll(".course_info__close,.subscribe_info");
+    const mOpen = document.querySelectorAll('[data-modal]'),
+        modals = document.querySelectorAll('.course_modal'),
+        mClose = document.querySelectorAll('[data-close]'),
+        mHtml = document.querySelector('html');
 
-//Открыть подробнее
-for (let elem of info_open_buttons) {
-    elem.addEventListener('click', function () {
+    if (mOpen.length == 0) return;
+    let mStatus = false;
 
-        let modal_ID = elem.getAttribute('course');
 
-        document.querySelector('html').style.overflow = 'hidden';
-        course_info.classList.add('active');
-        document.querySelector(`.course_info__card_in.${modal_ID}`).classList.add('active');
+    for (let el of mOpen) {
+        el.addEventListener('click', function (e) {
+            let modal = document.getElementById(el.getAttribute('data-modal'));
 
-        course_info.style.display = 'flex'
+            modalShow(modal);
+        });
+    }
 
-        console.log('open!');
-    })
-}
 
-//Закрыть подробнее
-for (elem of modal_close_buttons) {
-    elem.addEventListener('click', function () {
-        document.querySelector('html').style.overflow = 'unset';
-        course_info.classList.remove('active');
-        for (el of modal_windows)
-            el.classList.remove('active');
-        console.log('close!');
-    })
-}
+    for (let el of mClose) {
+        el.addEventListener('click', modalClose);
+    }
+    document.addEventListener('keydown', modalClose);
+
+
+    function checkBackgroundClick(event) {
+        if (event.target.classList.contains('course_modal'))
+            modalClose(event);
+    }
+
+    function modalShow(modal) {
+        modal.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+        modal.classList.remove('hide');
+        modal.classList.add('show');
+
+
+        document.addEventListener("click", checkBackgroundClick);
+
+        mHtml.style.overflow = 'hidden';
+        mStatus = true;
+    }
+
+    function modalClose(event) {
+        if (mStatus && (event.type != 'keydown' || event.keyCode === 27)) {
+            for (let modal of modals) {
+                modal.classList.remove('show');
+                modal.classList.add('hide');
+            }
+
+            document.removeEventListener('click', checkBackgroundClick);
+
+            mHtml.style.overflow = 'auto';
+            mStatus = false;
+
+
+            if (this.tagName.toLowerCase() == 'BUTTON'.toLowerCase() && this.dataset.close == 'subscribe') {
+                window.scrollTo({
+                    top: document.getElementById('contacts').offsetTop,
+                    behavior: 'smooth'
+                })
+            }
+        }
+    }
+})();
+
 
 
 //Соотношение сторон 16:9
