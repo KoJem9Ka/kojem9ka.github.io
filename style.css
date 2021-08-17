@@ -1490,15 +1490,15 @@ footer p:nth-child(2) {
 }
 
 .course_modal__header p {
-	width         : 60%;
+	max-width         : 60%;
 	font-size     : 3.8rem;
 	font-weight   : 700;
 	text-align    : center;
 }
 
 .course_modal__header img {
-	width    : 15rem;
-	height   : 15rem;
+	width    : 10rem;
+	height   : 10rem;
 }
 
 .course_modal__desc>p {
