@@ -1814,7 +1814,7 @@ nowrap {
 
 	.course_modal {
 		padding          : 2rem;
-		padding-bottom   : 20rem;
+		padding-bottom   : 10rem;
 	}
 
 	.course_modal__inner {
@@ -2050,7 +2050,7 @@ nowrap {
 	}
 
 	.contacts__text>h2 {
-		text-align   : center~;
+		text-align   : center;
 	}
 
 	.contacts__buttons {
