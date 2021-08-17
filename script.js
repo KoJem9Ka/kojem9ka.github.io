@@ -1,6 +1,9 @@
 //Выезжающее меню
 // var menubtn = document.querySelector('.header__menu');
 
+//Проверка браузера
+
+
 //Плавная навигация по сайту
 const scrollPos = () => window.pageYOffset || document.documentElement.scrollTop;
 let head_height = document.querySelector('.header').clientHeight;
