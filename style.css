@@ -39,13 +39,13 @@ h4 {
 	font-size   : 3rem;
 }
 
-bold,
-.bold {
+b,
+.b {
 	font-weight   : 700;
 }
 
-semibold,
-.semibold {
+strong,
+.strong {
 	font-weight   : 500;
 }
 
@@ -180,6 +180,8 @@ a {
 	font-style     : normal;
 	font-display   : block;
 }
+
+
 
 i {
 	/* use !important to prevent issues with browser extensions that change fonts */
@@ -1532,7 +1534,7 @@ i {
 	margin   : 0 0 0 2rem;
 }
 
-.contacts__buttons button {
+.contacts__buttons .button {
 	font-size             : 2.4rem;
 	--button_bg_color     : rgba(39, 135, 245, 0.2);
 	--button_text_color   : var(--vk-color);
@@ -1734,12 +1736,7 @@ footer p:nth-child(2) {
 	text-indent   : calc(var(--section-size) * 3);
 }
 
-.course_modal__section__content bold {
-	white-space   : nowrap;
-}
-
-nowrap {
-	font-weight   : normal;
+.course_modal__section__content b {
 	white-space   : nowrap;
 }
 
@@ -1761,7 +1758,6 @@ nowrap {
 
 .course_modal__button p {
 	font-size     : 3em;
-	font-weight   : 700;
 	text-align    : right;
 }
 
@@ -2183,7 +2179,7 @@ nowrap {
 	}
 
 	.ytvideo {
-		width   : 80%;
+		width   : 100%;
 	}
 
 	/* TEAM */
@@ -2265,7 +2261,7 @@ nowrap {
 		margin   : 2rem 0 0 0;
 	}
 
-	.contacts__buttons button {
+	.contacts__buttons .button {
 		width              : 100%;
 		-webkit-box-pack   : center;
 		-ms-flex-pack      : center;
