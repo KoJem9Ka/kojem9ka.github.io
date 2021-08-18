@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="yandex-verification" content="07312aec82cb388a" />
     <link rel="stylesheet" href="styles_reset.css">
     <link rel="stylesheet" href="style.css">
     <link
@@ -172,7 +171,7 @@
                 <img src="media/course_info/certificate.svg" alt="">
                 <div class="course_modal__section__content">
                     <div class="course_modal__section__title">Сертификат</div>
-                    <p>К концу курса каждый ученик создает выпускной анимационный ролик, который участвует в конкурсе на
+                    <p>К концу курса каждый ученик создаёт выпускной анимационный ролик, который участвует в конкурсе на
                         лучшую работу с выдачей грамоты победителя.</p>
                 </div>
             </div>
@@ -326,7 +325,7 @@
                 <img src="media/course_info/certificate.svg" alt="">
                 <div class="course_modal__section__content">
                     <div class="course_modal__section__title">Сертификат</div>
-                    <p>К концу курса каждый ученик создает выпускной анимационный ролик, который участвует в конкурсе на
+                    <p>К концу курса каждый ученик создаёт выпускной анимационный ролик, который участвует в конкурсе на
                         лучшую работу с выдачей грамоты победителя.</p>
                 </div>
             </div>
@@ -502,7 +501,6 @@
     </section>
 
     <section id="courses" class="courses">
-        <p class="courses__background"> </p>
         <div class="container courses__inner">
             <h2>Курсы</h2>
             <div class="courses__cards">
@@ -587,20 +585,25 @@
     <section class="videos" id="videos">
         <div class="container videos__inner">
             <h2>Ждём Вас на наших занятиях!</h2>
-            <!-- width="560" height="315" -->
             <div class="videos__items">
-                <iframe class="ytvideo ratio16_9" src="https://www.youtube.com/embed/4czkauoI5KQ"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-                <iframe class="ytvideo ratio16_9" src="https://www.youtube.com/embed/k5d6el1VYCY"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-                <iframe class="ytvideo ratio16_9" src="https://www.youtube.com/embed/OFW7cGD3dOI"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                <div class="ytvideo ratio16_9">
+                    <iframe class="ytvideo__inner" src="https://www.youtube.com/embed/4czkauoI5KQ"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="ytvideo ratio16_9">
+                    <iframe class="ytvideo__inner" src="https://www.youtube.com/embed/k5d6el1VYCY"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="ytvideo ratio16_9">
+                    <iframe class="ytvideo__inner" src="https://www.youtube.com/embed/OFW7cGD3dOI"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -612,34 +615,44 @@
             <h2>Команда</h2>
             <p>В нашей команде энергичные и целеустремленные профессионалы своего дела, использующие творческий подход и
                 обладающие нестандартным мышлением, обширными практическими знаниями и опытом работы в различных
-                отраслях программирования, гейм-дизайна, робо-инженерии и искуственного интеллекта.</p>
+                отраслях программирования, гейм-дизайна, робо-инженерии и искусственного интеллекта.</p>
             <div class="team__cards">
                 <div class="team__card team__card_first">
-                    <img src="media/team/Щербаков.jpg" alt="">
+                    <img src="media/team/SCHerbakov.jpg" alt="">
                     <p>Щербаков Максим Владимирович</p>
-                    <p>д.т.н., директор ЦДОД, заведующий кафедрой САПРиПК</p>
+                    <p><span>д.т.н., директор ЦДОД, заведующий кафедрой САПРиПК</span></p>
                 </div>
                 <div class="team__card">
-                    <img src="media/team/Щербакова.jpg" alt="">
+                    <img src="media/team/SCHerbakova.jpg" alt="">
                     <p>Щербакова Наталия Львовна</p>
-                    <p>к.т.н. , доцент кафедры Физика, ведущий инженер ЦМИТ ЛЮКС</p>
+                    <p><span>к.т.н. , доцент кафедры Физика, ведущий инженер ЦМИТ ЛЮКС</span></p>
                 </div>
                 <div class="team__card team__card_last">
-                    <img src="media/team/Матохина.jpg" alt="">
+                    <img src="media/team/Matohina.jpg" alt="">
                     <p>Матохина Анна Владимировна</p>
-                    <p>к.т.н. , доцент кафедры САПРиПК, директор ЦМИТ ЛЮКС</p>
+                    <p><span>к.т.н. , доцент кафедры САПРиПК, директор ЦМИТ ЛЮКС</span></p>
                 </div>
             </div>
             <div class="team__cards">
                 <div class="team__card">
-                    <img src="media/team/Пеньковская.jpg" alt="">
+                    <img src="media/team/Penkovskaya.jpg" alt="">
                     <p>Пеньковская Анна Владимировна</p>
-                    <p>менеджер ЦДОД</p>
+                    <p><span>менеджер ЦДОД</span></p>
                 </div>
                 <div class="team__card team__card_last">
-                    <img src="media/team/Козина.jpg" alt="">
+                    <img src="media/team/Dragunov.jpg" alt="">
+                    <p>Драгунов Станислав Евгеньевич</p>
+                    <p><span>Преподаватель Робототехники</span></p>
+                </div>
+                <div class="team__card team__card__bottom">
+                    <img src="media/team/Kozina.jpg" alt="">
                     <p>Козина Светлана Александровна</p>
-                    <p>менеджер ЦДОД</p>
+                    <p><span>менеджер ЦДОД</span></p>
+                </div>
+                <div class="team__card team__card__bottom team__card_last">
+                    <img src="media/team/Kosov.jpg" alt="">
+                    <p>Косов Андрей Васильевич</p>
+                    <p><span>Преподаватель Python</span></p>
                 </div>
             </div>
         </div>
@@ -704,7 +717,7 @@
                     <div class="accordion">
                         <div class="accordion__head">
                             <img src="media/icons/open_close.svg" alt="">
-                            <p class="accordion__title">Какой документ выдается по окончанию курсов?
+                            <p class="accordion__title">Какой документ выдается по окончании курсов?
                             </p>
                         </div>
                         <div class="accordion__content">
@@ -792,7 +805,7 @@
                     <b>Телефон</b>: <a href="tel:+79178483220">+7 (917) 848-32-20</a>
                 </p>
                 <p>
-                    <b>E-mail</b>: cad@vstu.ru
+                    <b>E-mail</b>: <a href="mailto:cad@vstu.ru">cad@vstu.ru</a>
                 </p>
                 <div class="contacts__buttons">
                     <a class="button" target="_blank" href="https://vk.com/robofabrica">

@@ -62,7 +62,7 @@ a {
 	color   : var(--logo-color);
 }
 
-/* BUTTON 1 */
+/* ! BUTTON 1 */
 
 .button {
 	--button_bg_color     : #007AA926;
@@ -136,7 +136,7 @@ a {
 	z-index   : 2;
 }
 
-/* BUTTON 2 */
+/* ! BUTTON 2 */
 
 .button2 {
 	position             : relative;
@@ -467,7 +467,7 @@ i {
 
 
 
-/* HEADER */
+/* ! HEADER */
 
 .header {
 	position             : fixed;
@@ -563,7 +563,7 @@ i {
 
 
 
-/* MAIN SECTION */
+/* ! MAIN SECTION */
 
 .main {
 	--section_size      : 10px;
@@ -700,7 +700,7 @@ i {
 
 
 
-/* WHO WE ARE */
+/* ! WHO WE ARE */
 
 .whoweare {
 	background-color   : white;
@@ -757,7 +757,7 @@ i {
 
 
 
-/* WE DO */
+/* ! WE DO */
 
 .wedo {
 	/* background-image: url(media/wedo.jpg) no-repeat; */
@@ -830,12 +830,10 @@ i {
 
 
 
-/* COURSES */
+/* ! COURSES */
 
 .courses {
 	--section_size   : 1rem;
-	position         : relative;
-	overflow         : hidden;
 	--python1        : rgba(228, 242, 255, 1);
 	--python2        : rgba(2, 119, 189, 0.2);
 	--python3        : rgba(2, 119, 189, 1);
@@ -860,6 +858,8 @@ i {
 	--twoD2          : rgba(198, 13, 13, 0.2);
 	--twoD3          : rgba(198, 13, 13, 1);
 	--twoD4          : rgba(198, 13, 13, .3);
+	position         : relative;
+	overflow         : hidden;
 }
 
 .courses__inner {
@@ -876,37 +876,30 @@ i {
 }
 
 
-.courses__background {
-	position            : absolute;
-	left                : 0;
-	top                 : 0;
-	width               : 100%;
-	height              : 100%;
-	background          : url(media/courses_backgr.png);
-	background-size     : contain;
-	-webkit-animation   : scroll linear 100s infinite;
-	animation           : scroll linear 100s infinite;
-	z-index             : -100;
-	opacity             : 0.2;
-}
 
-@-webkit-keyframes scroll {
-	from {
-		background-position   : 0 0;
-	}
 
-	to {
-		background-position   : -450vh 0;
-	}
+.courses::before {
+	will-change       : transform;
+	content           : '';
+	position          : absolute;
+	opacity           : 0.2;
+	background        : url(media/backgr.svg);
+	background-size   : min(100vh, 100vw);
+	top               : 0;
+	right             : -450vh;
+	bottom            : 0;
+	left              : 0;
+	animation         : scroll linear 100s infinite;
+	z-index           : -1000;
 }
 
 @keyframes scroll {
 	from {
-		background-position   : 0 0;
+		transform   : translate3d(0, 0, 0);
 	}
 
 	to {
-		background-position   : -450vh 0;
+		transform   : translate3d(-450vh, 0, 0);
 	}
 }
 
@@ -1004,9 +997,9 @@ i {
 	font-size   : calc(var(--section_size) * 2);
 }
 
-/* COURSES COLORS */
+/* ! COURSES COLORS */
 
-/* Python */
+/* ! Python */
 .c__python {
 	background-color     : var(--python1);
 	-webkit-box-shadow   : 0 0 5rem var(--python4);
@@ -1031,7 +1024,7 @@ i {
 	box-shadow           : 0 0 1rem var(--python3);
 }
 
-/* Robo */
+/* ! Robo */
 .c__robo {
 	background-color     : var(--robo1);
 	-webkit-box-shadow   : 0 0 5rem var(--robo4);
@@ -1056,7 +1049,7 @@ i {
 	box-shadow           : 0 0 1rem var(--robo3);
 }
 
-/* 3D */
+/* ! 3D */
 .c__3d {
 	background-color     : var(--treeDmax1);
 	-webkit-box-shadow   : 0 0 5rem var(--treeDmax4);
@@ -1081,7 +1074,7 @@ i {
 	box-shadow           : 0 0 1rem var(--treeDmax3);
 }
 
-/* C# */
+/* ! C# */
 .c__sharp {
 	background-color     : var(--Csharp1);
 	-webkit-box-shadow   : 0 0 5rem var(--Csharp4);
@@ -1106,7 +1099,7 @@ i {
 	box-shadow           : 0 0 1rem var(--Csharp3);
 }
 
-/* Android */
+/* ! Android */
 .c__android {
 	background-color     : var(--android1);
 	-webkit-box-shadow   : 0 0 5rem var(--android4);
@@ -1131,7 +1124,7 @@ i {
 	box-shadow           : 0 0 1rem var(--android3);
 }
 
-/* 2D */
+/* ! 2D */
 .c__2d {
 	background-color     : var(--twoD1);
 	-webkit-box-shadow   : 0 0 5rem var(--twoD4);
@@ -1178,7 +1171,7 @@ i {
 
 
 
-/* VIDEOS */
+/* ! VIDEOS */
 
 .videos {
 	background        : url(media/videos_backgr.svg);
@@ -1215,12 +1208,16 @@ i {
 }
 
 .ytvideo {
-	border               : 1rem solid white;
-	border-radius        : 2rem;
-	width                : calc(100% / 3);
-	-webkit-transition   : border .3s ease;
-	-o-transition        : border .3s ease;
-	transition           : border .3s ease;
+	overflow        : hidden;
+	border          : 1rem solid white;
+	border-radius   : 2rem;
+	width           : calc(100% / 3);
+	transition      : border .3s ease;
+}
+
+.ytvideo__inner {
+	width    : 100%;
+	height   : 100%;
 }
 
 .ytvideo:hover {
@@ -1232,7 +1229,7 @@ i {
 
 
 
-/* TEAM */
+/* ! TEAM */
 
 .team {
 	background-color   : white;
@@ -1262,27 +1259,28 @@ i {
 }
 
 .team__cards {
-	display            : -webkit-box;
-	display            : -ms-flexbox;
-	display            : flex;
-	-webkit-box-pack   : center;
-	-ms-flex-pack      : center;
-	justify-content    : center;
+	display           : flex;
+	justify-content   : center;
 }
 
 .team__cards>*+* {
 	margin   : 0 0 0 3rem;
 }
 
+
 .team__card {
-	padding              : 2rem;
-	border-radius        : 4rem;
-	width                : -webkit-min-content;
-	width                : -moz-min-content;
-	width                : min-content;
-	text-align           : center;
-	-webkit-box-shadow   : var(--card-shadow);
-	box-shadow           : var(--card-shadow);
+	display          : flex;
+	flex-direction   : column;
+	align-items      : center;
+	padding          : 2rem;
+	border-radius    : 4rem;
+	width            : min-content;
+	text-align       : center;
+	box-shadow       : var(--card-shadow);
+}
+
+.team__card span {
+	margin   : auto;
 }
 
 .team__card>*+* {
@@ -1291,8 +1289,10 @@ i {
 
 .team__card img {
 	border-radius   : 6rem;
-	width           : 13.02083333333333vw;
-	height          : 13.02083333333333vw;
+	width           : 13.5vw;
+	height          : 13.5vw;
+	max-width       : 300px;
+	max-height      : 300px;
 }
 
 .team__card>p:nth-child(2) {
@@ -1301,6 +1301,9 @@ i {
 
 .team__card>p:nth-child(3) {
 	font-size   : 2rem;
+	display     : flex;
+	flex-grow   : 1;
+
 }
 
 
@@ -1309,7 +1312,7 @@ i {
 
 
 
-/* FAQ */
+/* ! FAQ */
 
 .faqq {
 	font-size   : 2.4rem;
@@ -1482,7 +1485,7 @@ i {
 
 
 
-/* CONTACTS */
+/* ! CONTACTS */
 
 .contacts {
 	background-color   : white;
@@ -1535,9 +1538,10 @@ i {
 }
 
 .contacts__buttons .button {
-	font-size             : 2.4rem;
 	--button_bg_color     : rgba(39, 135, 245, 0.2);
 	--button_text_color   : var(--vk-color);
+	padding               : 0.6em 1.2em;
+	font-size             : 2.4rem;
 }
 
 
@@ -1551,7 +1555,7 @@ i {
 
 
 
-/* FOOTER */
+/* ! FOOTER */
 
 footer {
 	background-color   : var(--dark-color);
@@ -1593,7 +1597,7 @@ footer p:nth-child(2) {
 
 
 
-/* COURSE MODAL */
+/* ! COURSE MODAL */
 
 .course_modal {
 	--section-size   : 1rem;
@@ -1757,8 +1761,8 @@ footer p:nth-child(2) {
 }
 
 .course_modal__button p {
-	font-size     : 3em;
-	text-align    : right;
+	font-size    : 3em;
+	text-align   : right;
 }
 
 .course_modal__button span {
@@ -1951,15 +1955,14 @@ footer p:nth-child(2) {
 
 
 
-/* MEDIA */
+/* ! MEDIA */
 @media (max-width: 1920px) {
 	html {
 		font-size   : 0.52vw;
 	}
 
-	/* MAIN SECTION */
+	/* ! MAIN SECTION */
 	.main {
-		/* 10/1920*100 */
 		font-size        : .52vw;
 		--section_size   : .52vw;
 	}
@@ -1969,12 +1972,12 @@ footer p:nth-child(2) {
 
 @media (max-width: 1280px) {
 
-	/* CONTAINER */
+	/* ! CONTAINER */
 	.container {
 		width   : calc(90% + 3rem);
 	}
 
-	/* HEADER */
+	/* ! HEADER */
 	.header {
 		font-size       : 3rem;
 		width           : 100%;
@@ -1994,7 +1997,7 @@ footer p:nth-child(2) {
 		padding   : 4rem 15px;
 	}
 
-	/* COURSE MODAL */
+	/* ! COURSE MODAL */
 
 	.course_modal {
 		--section-size   : 1.2rem;
@@ -2031,7 +2034,7 @@ footer p:nth-child(2) {
 		display   : none;
 	}
 
-	/* HEADER */
+	/* ! HEADER */
 	.header {
 		font-size   : 1.4rem;
 	}
@@ -2049,7 +2052,7 @@ footer p:nth-child(2) {
 		display   : block;
 	}
 
-	/* MAIN SECTION */
+	/* ! MAIN SECTION */
 	.main {
 		-webkit-box-orient      : vertical;
 		-webkit-box-direction   : reverse;
@@ -2076,7 +2079,7 @@ footer p:nth-child(2) {
 		font-size   : 5em;
 	}
 
-	/* WHO WE ARE */
+	/* ! WHO WE ARE */
 	.whoweare__inner {
 		-webkit-box-orient      : vertical;
 		-webkit-box-direction   : reverse;
@@ -2105,7 +2108,7 @@ footer p:nth-child(2) {
 		text-align   : center;
 	}
 
-	/* WE DO */
+	/* ! WE DO */
 
 
 	.wedo__inner>*+* {
@@ -2136,7 +2139,7 @@ footer p:nth-child(2) {
 		margin   : 2rem 0 0 0;
 	}
 
-	/* COURSES */
+	/* ! COURSES */
 
 	.courses {
 		/* 7.5/396*100 */
@@ -2158,20 +2161,15 @@ footer p:nth-child(2) {
 		width   : 100%;
 	}
 
-	/* VIDEOS */
+	/* ! VIDEOS */
 
 	.videos__inner {
 		text-align   : center;
 	}
 
 	.videos__items {
-		-webkit-box-orient      : vertical;
-		-webkit-box-direction   : normal;
-		-ms-flex-direction      : column;
-		flex-direction          : column;
-		-webkit-box-align       : center;
-		-ms-flex-align          : center;
-		align-items             : center;
+		flex-direction   : column;
+		align-items      : center;
 	}
 
 	.videos__items>*+* {
@@ -2179,10 +2177,16 @@ footer p:nth-child(2) {
 	}
 
 	.ytvideo {
-		width   : 100%;
+		width      : 100%;
+		overflow   : hidden;
 	}
 
-	/* TEAM */
+	.ytvideo__inner {
+		width    : 100%;
+		height   : 100%;
+	}
+
+	/* ! TEAM */
 	.team__inner>p {
 		width   : 100%;
 	}
@@ -2205,8 +2209,12 @@ footer p:nth-child(2) {
 		margin   : 0 0 3rem 0;
 	}
 
+	.team__card__bottom {
+		margin   : 3rem 0 0 0;
+	}
+
 	.team__card_last {
-		margin   : 0 0 0 3rem;
+		margin-left   : 3rem;
 	}
 
 	.team__card img {
@@ -2215,7 +2223,7 @@ footer p:nth-child(2) {
 		height   : 35vw;
 	}
 
-	/* FAQ */
+	/* ! FAQ */
 	.faqq__accordions {
 		width   : 100%;
 	}
@@ -2224,7 +2232,7 @@ footer p:nth-child(2) {
 		display   : none;
 	}
 
-	/* CONTACTS */
+	/* ! CONTACTS */
 	.contacts__inner {
 		display                 : -webkit-box;
 		display                 : -ms-flexbox;
@@ -2275,7 +2283,7 @@ footer p:nth-child(2) {
 
 @media (max-width: 450px) {
 
-	/* HEADER */
+	/* ! HEADER */
 	.header {
 		padding   : 1rem;
 	}
@@ -2285,7 +2293,7 @@ footer p:nth-child(2) {
 	}
 }
 
-/* Блокировка кнопки входа */
+/* ! Блокировка кнопки входа */
 
 .header__auth {
 	display   : none;
