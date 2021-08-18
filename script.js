@@ -42,18 +42,20 @@ for (elem of subscribe_button) {
         navElem.classList.remove('hide');
         navElem.classList.add('show');
         myHtml.style.overflow = 'hidden';
+        window.addEventListener('orientationchange', navClose);
+        window.addEventListener('resize', navClose);
     });
 
     function navClose() {
         navElem.classList.remove('show');
         navElem.classList.add('hide');
         myHtml.style.overflow = 'auto';
+        window.removeEventListener('orientationchange', navClose);
+        window.removeEventListener('resize', navClose);
     }
 
     for (let el of navHide)
         el.addEventListener('click', navClose);
-    window.addEventListener('orientationchange', navClose);
-    window.addEventListener('resize', navClose);
 
 })();
 
