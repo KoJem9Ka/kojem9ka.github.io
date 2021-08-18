@@ -1,26 +1,20 @@
-//Выезжающее меню
-// var menubtn = document.querySelector('.header__menu');
+// Глобальные переменные
 
-//Проверка браузера
-
+const myHtml = document.querySelector('html');
 
 //Плавная навигация по сайту
-const scrollPos = () => window.pageYOffset || document.documentElement.scrollTop;
-let head_height = document.querySelector('.header').clientHeight;
-const anchors = document.querySelectorAll('a[href^="#"]');
+const scrollPos = () => window.pageYOffset || document.documentElement.scrollTop,
+    head_height = () => document.querySelector('.header').clientHeight,
+    anchors = document.querySelectorAll('a[href^="#"]');
 
 for (let anchor of anchors) {
     anchor.addEventListener("click", function (event) {
         event.preventDefault();
         const blockID = anchor.getAttribute('href')
         let block = document.getElementById(blockID.substr(1, blockID.length - 1)); //#hid2
-        let jmp = block.offsetTop;
-
-        // if (scrollPos() > block.offsetTop)
-        //     jmp = jmp - head_height;
 
         window.scrollTo({
-            top: jmp - head_height,
+            top: block.offsetTop - head_height(),
             behavior: 'smooth'
         })
     })
@@ -30,13 +24,38 @@ let subscribe_button = document.querySelectorAll('.subscribe');
 for (elem of subscribe_button) {
     elem.addEventListener("click", function (event) {
         event.preventDefault();
-        let block = document.getElementById('contacts').offsetTop;
         window.scrollTo({
-            top: block - head_height,
+            top: document.getElementById('contacts').offsetTop - head_height(),
             behavior: 'smooth'
         })
     })
 }
+
+//Мобильная навигация
+; (function () {
+
+    const navOpen = document.querySelector('.header__modal_menu'),
+        navElem = document.querySelector('.mobile_modal_nav'),
+        navHide = document.querySelectorAll('.mobile_modal_nav a,.mobile_modal_nav__close');
+
+    navOpen.addEventListener('click', function () {
+        navElem.classList.remove('hide');
+        navElem.classList.add('show');
+        myHtml.style.overflow = 'hidden';
+    });
+
+    function navClose() {
+        navElem.classList.remove('show');
+        navElem.classList.add('hide');
+        myHtml.style.overflow = 'auto';
+    }
+
+    for (let el of navHide)
+        el.addEventListener('click', navClose);
+    window.addEventListener('orientationchange', navClose);
+    window.addEventListener('resize', navClose);
+
+})();
 
 //Подробнее о курсе
 
@@ -44,8 +63,8 @@ for (elem of subscribe_button) {
 
     const mOpen = document.querySelectorAll('[data-modal]'),
         modals = document.querySelectorAll('.course_modal'),
-        mClose = document.querySelectorAll('[data-close]'),
-        mHtml = document.querySelector('html');
+        mClose = document.querySelectorAll('[data-close]');
+    let mScroll = 0;
 
     if (mOpen.length == 0) return;
     let mStatus = false;
@@ -76,13 +95,13 @@ for (elem of subscribe_button) {
             top: 0,
             behavior: 'smooth'
         })
+        modal.setAttribute('style', '');
         modal.classList.remove('hide');
         modal.classList.add('show');
 
 
         document.addEventListener("click", checkBackgroundClick);
-
-        mHtml.style.overflow = 'hidden';
+        myHtml.style.overflow = 'hidden';
         mStatus = true;
     }
 
@@ -94,12 +113,10 @@ for (elem of subscribe_button) {
             }
 
             document.removeEventListener('click', checkBackgroundClick);
-
-            mHtml.style.overflow = 'auto';
+            myHtml.style.overflow = 'auto';
             mStatus = false;
 
-
-            if (this.tagName.toLowerCase() == 'BUTTON'.toLowerCase() && this.dataset.close == 'subscribe') {
+            if (this.dataset != undefined && this.dataset.close == 'subscribe') {
                 window.scrollTo({
                     top: document.getElementById('contacts').offsetTop,
                     behavior: 'smooth'
@@ -120,7 +137,9 @@ let we_do__items = document.querySelectorAll('.wedo__item>p');
 
 function newsize() {
     // Обновление переменных
-    head_height = document.querySelector('.header').clientHeight;
+
+    //пусто
+
     //Соотношение сторон 16:9
     for (elem of ratio16_9) {
         let widt = elem.clientWidth;
@@ -133,19 +152,6 @@ function newsize() {
         // elem.setAttribute("height", widt * 9 / 16);
         elem.style.height = `${widt * 2 / 3}px`;
     }
-
-
-    //Соотношение сторон 3:2
-    //выравнивание тексте к левому краю в We Do
-    // for (item of we_do__items)
-    //     item.style.maxWidth = `none`,
-    //         item.style.minWidth = `none`
-    // let minn = Infinity;
-    // for (item of we_do__items)
-    //     minn = Math.min(minn, Math.floor(item.clientWidth));
-    // for (item of we_do__items)
-    //     item.style.maxWidth = `${minn}px`,
-    //         item.style.minWidth = `${minn}px`
 }
 
 newsize();
