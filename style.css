@@ -330,10 +330,13 @@ i {
 }
 
 .mobile_modal_nav__close {
+	cursor          : pointer;
+	margin-bottom   : auto;
+}
+
+.mobile_modal_nav__close>svg {
 	-ms-flex-negative   : 0;
 	flex-shrink         : 0;
-	cursor              : pointer;
-	margin-bottom       : auto;
 	width               : 1em;
 	height              : auto;
 	fill                : red;
@@ -341,14 +344,14 @@ i {
 
 
 .mobile_modal_nav__inner>*:not(:first-child) {
-	-webkit-transition   : all .2s ease;
-	-o-transition        : all .2s ease;
-	transition           : all .2s ease;
+	-webkit-transition   : all .1s ease;
+	-o-transition        : all .1s ease;
+	transition           : all .1s ease;
 }
 
-.mobile_modal_nav__inner>*:not(:first-child):focus {
+.mobile_modal_nav__inner>*:not(:first-child):hover {
 	background-color     : var(--logo-color);
-	padding              : 5px 10px;
+	padding              : .3em .8em;
 	border-radius        : 100px;
 	-webkit-box-shadow   : 0 0 10px var(--logo-color);
 	box-shadow           : 0 0 10px var(--logo-color);
@@ -367,7 +370,7 @@ i {
 
 	to {
 		visibility          : visible;
-		opacity             : .97;
+		opacity             : .96;
 		-webkit-transform   : translate(0, 0);
 		transform           : translate(0, 0);
 
@@ -387,7 +390,7 @@ i {
 
 	to {
 		visibility          : visible;
-		opacity             : .97;
+		opacity             : .96;
 		-webkit-transform   : translate(0, 0);
 		transform           : translate(0, 0);
 
@@ -397,7 +400,7 @@ i {
 @-webkit-keyframes modal_nav_hide {
 	from {
 		visibility          : visible;
-		opacity             : .97;
+		opacity             : .96;
 		-webkit-transform   : translate(0, 0);
 		transform           : translate(0, 0);
 
@@ -415,7 +418,7 @@ i {
 @keyframes modal_nav_hide {
 	from {
 		visibility          : visible;
-		opacity             : .97;
+		opacity             : .96;
 		-webkit-transform   : translate(0, 0);
 		transform           : translate(0, 0);
 
@@ -434,7 +437,7 @@ i {
 
 .mobile_modal_nav.show {
 	visibility                   : visible;
-	opacity                      : .97;
+	opacity                      : .96;
 	-webkit-animation-name       : modal_nav_show;
 	animation-name               : modal_nav_show;
 	-webkit-animation-duration   : .3s;
@@ -874,17 +877,17 @@ i {
 
 
 .courses__background {
-	position                                                                                                                                                                                             : absolute;
-	left                                                                                                                                                                                                 : 0;
-	top                                                                                                                                                                                                  : 0;
-	width                                                                                                                                                                                                : 100%;
-	height                                                                                                                                                                                               : 100%;
-	background                                                                                                                                                                                           : url(media/courses_backgr.png);
-	background-size                                                                                                                                                                                      : contain;
-	/* -webkit-animation                                                                                                                                                                                 : scroll linear 100s infinite; */
-	/* animation                                                                                                                                                                                         : scroll linear 100s infinite; */
-	z-index                                                                                                                                                                                              : -100;
-	opacity                                                                                                                                                                                              : 0.2;
+	position            : absolute;
+	left                : 0;
+	top                 : 0;
+	width               : 100%;
+	height              : 100%;
+	background          : url(media/courses_backgr.png);
+	background-size     : contain;
+	-webkit-animation   : scroll linear 100s infinite;
+	animation           : scroll linear 100s infinite;
+	z-index             : -100;
+	opacity             : 0.2;
 }
 
 @-webkit-keyframes scroll {
