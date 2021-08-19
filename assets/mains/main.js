@@ -164,6 +164,9 @@ function newsize() {
         // elem.setAttribute("height", widt * 9 / 16);
         elem.style.height = `${widt * 2 / 3}px`;
     }
+    console.log(document.querySelector('.main'));
+    document.querySelector('.main').style.paddingTop = `${head_height()}px`;
+    console.log('upd');
 }
 
 //Анимированная прокрутка
