@@ -265,8 +265,10 @@ a {
 }
 
 .mobile_modal_nav__close {
-	cursor          : pointer;
-	margin-bottom   : auto;
+	display            : flex;
+	cursor             : pointer;
+	margin-bottom      : auto;
+	background-color   : transparent;
 }
 
 .mobile_modal_nav__close>svg {
@@ -274,8 +276,9 @@ a {
 	-ms-flex-negative     : 0;
 	flex-shrink           : 0;
 	width                 : 1em;
-	height                : auto;
+	height                : 1em;
 	fill                  : red;
+	margin                : auto;
 }
 
 
@@ -374,8 +377,8 @@ a {
 	opacity                      : .96;
 	-webkit-animation-name       : modal_nav_show;
 	animation-name               : modal_nav_show;
-	-webkit-animation-duration   : .1s;
-	animation-duration           : .1s;
+	-webkit-animation-duration   : .3s;
+	animation-duration           : .3s;
 }
 
 .mobile_modal_nav.hide {
@@ -707,7 +710,7 @@ a {
 /* ! WE DO */
 
 .wedo {
-	background        : url(assets/wedo_filter_compressed.jpg) no-repeat center;
+	background        : url(../wedo_filter_compressed.jpg) no-repeat center;
 	background-size   : cover;
 	color             : white;
 	font-size         : 2.4rem;
@@ -839,7 +842,7 @@ a {
 	content               : '';
 	position              : absolute;
 	opacity               : 0.2;
-	background            : url(assets/courses/backgr.svg);
+	background            : url(../courses/backgr.svg);
 	background-position   : left bottom;
 	background-size       : contain;
 	top                   : 0;
@@ -1157,7 +1160,7 @@ a {
 /* ! VIDEOS */
 
 .videos {
-	background        : url(assets/videos_backgr.svg);
+	background        : url(../videos_backgr.svg);
 	background-size   : cover;
 }
 
@@ -2113,7 +2116,7 @@ footer p:nth-child(2) {
 	}
 
 	.main__right {
-		width   : 100%;
+		width   : 80%;
 	}
 
 	.main__desc,
