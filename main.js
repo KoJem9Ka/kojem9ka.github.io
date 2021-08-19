@@ -60,7 +60,6 @@ for (elem of subscribe_button) {
 })();
 
 //Подробнее о курсе
-
 ; (function () {
 
     const mOpen = document.querySelectorAll('[data-modal]'),
@@ -130,7 +129,7 @@ for (elem of subscribe_button) {
 
 
 
-//Соотношение сторон 16:9
+//Соотношение сторон элементов
 let ratio16_9 = document.querySelectorAll('.ratio16_9'),
     ratio3_2 = document.querySelectorAll('.ratio3_2')
 
@@ -164,9 +163,7 @@ window.addEventListener('resize', function () {
 
 
 //Спойлеры
-
 let spo__head = document.querySelectorAll('.accordion__head');
-
 for (var i = 0; i < spo__head.length; i++) {
     spo__head[i].addEventListener('click', function () {
         // this.parentNode.classList.toggle('accordion__active');
@@ -182,45 +179,3 @@ for (var i = 0; i < spo__head.length; i++) {
         }
     })
 }
-
-
-
-
-// $('img.img-svg').each(function(){
-//     var $img = $(this);
-//     var imgClass = $img.attr('class');
-//     var imgURL = $img.attr('src');
-//     $.get(imgURL, function(data) {
-//       var $svg = $(data).find('svg');
-//       if(typeof imgClass !== 'undefined') {
-//         $svg = $svg.attr('class', imgClass+' replaced-svg');
-//       }
-//       $svg = $svg.removeAttr('xmlns:a');
-//       if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
-//         $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
-//       }
-//       $img.replaceWith($svg);
-//     }, 'xml');
-//   });
-
-// $(document).ready(function () {
-
-//     $('.svg-inline').each(function () {
-
-//         var $img = $(this),
-//             imgURL = $img.attr('src'),
-//             imgID = $img.attr('id');
-
-//         $.get(imgURL, function (data) {
-//             // Get the SVG tag, ignore the rest
-//             var $svg = $(data).find('svg');
-//             // Add replaced image's ID to the new SVG
-//             if (typeof imgID !== 'undefined') {
-//                 $svg = $svg.attr('id', imgID);
-//             }
-
-//             $svg = $svg.removeAttr('xmlns:a');
-//             $img.replaceWith($svg);
-//         }, 'xml');
-//     });
-// });
