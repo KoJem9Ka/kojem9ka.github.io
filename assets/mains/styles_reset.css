@@ -51,6 +51,8 @@ body {
 input,
 button,
 textarea {
+    line-height   : inherit;
+    font-size     : inherit;
     font-family   : inherit;
 }
 

@@ -598,13 +598,13 @@ section {
 	font-size   : 4em;
 }
 
-.main__left>button {
+.main__left>.button {
 	font-size           : 4em;
 	-webkit-animation   : main_butt_anim 5s infinite linear;
 	animation           : main_butt_anim 5s infinite linear;
 }
 
-.main__left>button:hover {
+.main__left>.button:hover {
 	-webkit-animation   : none;
 	animation           : none;
 }
@@ -943,9 +943,9 @@ section {
 	width                     : -webkit-calc((100% - 3rem * 2) / 3);
 	width                     : calc((100% - 3rem * 2) / 3);
 	text-align                : center;
-	-webkit-transition        : all .3s ease;
-	-o-transition             : all .3s ease;
-	transition                : all .3s ease;
+	-webkit-transition        : all .3s ease !important;
+	-o-transition             : all .3s ease !important;
+	transition                : all .3s ease !important;
 }
 
 .courses__card>*+* {
@@ -955,9 +955,9 @@ section {
 
 
 .courses__card:hover {
-	-webkit-transform   : scale(1.05);
-	-ms-transform       : scale(1.05);
-	transform           : scale(1.05);
+	-webkit-transform   : scale(1.05) !important;
+	-ms-transform       : scale(1.05) !important;
+	transform           : scale(1.05) !important;
 }
 
 .courses__card__img {
@@ -1031,11 +1031,11 @@ section {
 	background-color   : var(--python3);
 }
 
-.c__python button:last-child {
+.c__python .button2:last-child {
 	background-color   : var(--python3);
 }
 
-.c__python button:last-child:hover {
+.c__python .button2:last-child:hover {
 	-webkit-box-shadow   : 0 0 1rem var(--python3);
 	box-shadow           : 0 0 1rem var(--python3);
 }
@@ -1056,11 +1056,11 @@ section {
 	background-color   : var(--robo3);
 }
 
-.c__robo button:last-child {
+.c__robo .button2:last-child {
 	background-color   : var(--robo3);
 }
 
-.c__robo button:last-child:hover {
+.c__robo .button2:last-child:hover {
 	-webkit-box-shadow   : 0 0 1rem var(--robo3);
 	box-shadow           : 0 0 1rem var(--robo3);
 }
@@ -1081,11 +1081,11 @@ section {
 	background-color   : var(--treeDmax3);
 }
 
-.c__3d button:last-child {
+.c__3d .button2:last-child {
 	background-color   : var(--treeDmax3);
 }
 
-.c__3d button:last-child:hover {
+.c__3d .button2:last-child:hover {
 	-webkit-box-shadow   : 0 0 1rem var(--treeDmax3);
 	box-shadow           : 0 0 1rem var(--treeDmax3);
 }
@@ -1106,11 +1106,11 @@ section {
 	background-color   : var(--Csharp3);
 }
 
-.c__sharp button:last-child {
+.c__sharp .button2:last-child {
 	background-color   : var(--Csharp3);
 }
 
-.c__sharp button:last-child:hover {
+.c__sharp .button2:last-child:hover {
 	-webkit-box-shadow   : 0 0 1rem var(--Csharp3);
 	box-shadow           : 0 0 1rem var(--Csharp3);
 }
@@ -1131,11 +1131,11 @@ section {
 	background-color   : var(--android3);
 }
 
-.c__android button:last-child {
+.c__android .button2:last-child {
 	background-color   : var(--android3);
 }
 
-.c__android button:last-child:hover {
+.c__android .button2:last-child:hover {
 	-webkit-box-shadow   : 0 0 1rem var(--android3);
 	box-shadow           : 0 0 1rem var(--android3);
 }
@@ -1156,11 +1156,11 @@ section {
 	background-color   : var(--twoD3);
 }
 
-.c__2d button:last-child {
+.c__2d .button2:last-child {
 	background-color   : var(--twoD3);
 }
 
-.c__2d button:last-child:hover {
+.c__2d .button2:last-child:hover {
 	-webkit-box-shadow   : 0 0 1rem var(--twoD3);
 	box-shadow           : 0 0 1rem var(--twoD3);
 }
@@ -1234,9 +1234,9 @@ section {
 	border-radius           : 2rem;
 	width                   : -webkit-calc(100% / 3);
 	width                   : calc(100% / 3);
-	-webkit-transition      : border .3s ease;
-	-o-transition           : border .3s ease;
-	transition              : border .3s ease;
+	-webkit-transition      : all .3s ease !important;
+	-o-transition           : all .3s ease !important;
+	transition              : all .3s ease !important;
 }
 
 .ytvideo__inner {
@@ -1860,7 +1860,7 @@ footer p:nth-child(2) {
 	white-space   : normal;
 }
 
-.course_modal__button button {
+.course_modal__button .button2 {
 	-webkit-border-radius   : -webkit-calc(var(--section-size) * 1.8);
 	border-radius           : calc(var(--section-size) * 1.8);
 	font-size               : 2.4em;
@@ -2190,7 +2190,7 @@ footer p:nth-child(2) {
 		font-size   : 5.5em;
 	}
 
-	.main__left>button {
+	.main__left>.button {
 		font-size   : 5em;
 	}
 

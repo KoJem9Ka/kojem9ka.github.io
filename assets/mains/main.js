@@ -19,16 +19,16 @@ for (let anchor of anchors) {
     })
 }
 
-let subscribe_button = document.querySelectorAll('.subscribe');
-for (elem of subscribe_button) {
-    elem.addEventListener("click", function (event) {
-        event.preventDefault();
-        window.scrollTo({
-            top: document.getElementById('contacts').offsetTop - head_height(),
-            behavior: 'smooth'
-        })
-    })
-}
+// let subscribe_button = document.querySelectorAll('.subscribe');
+// for (elem of subscribe_button) {
+//     elem.addEventListener("click", function (event) {
+//         event.preventDefault();
+//         window.scrollTo({
+//             top: document.getElementById('contacts').offsetTop - head_height(),
+//             behavior: 'smooth'
+//         })
+//     })
+// }
 
 //Мобильная навигация
 ; (function () {
@@ -116,12 +116,12 @@ for (elem of subscribe_button) {
             myHtml.style.overflow = 'auto';
             mStatus = false;
 
-            if (this.dataset != undefined && this.dataset.close == 'subscribe') {
-                window.scrollTo({
-                    top: document.getElementById('contacts').offsetTop,
-                    behavior: 'smooth'
-                })
-            }
+            // if (this.dataset != undefined && this.dataset.close == 'subscribe') {
+            //     window.scrollTo({
+            //         top: document.getElementById('contacts').offsetTop,
+            //         behavior: 'smooth'
+            //     })
+            // }
         }
     }
 })();
