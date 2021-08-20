@@ -164,37 +164,23 @@ function newsize() {
         // elem.setAttribute("height", widt * 9 / 16);
         elem.style.height = `${widt * 2 / 3}px`;
     }
-    console.log(document.querySelector('.main'));
+    //Фикс наезжания header на контент в.main
     document.querySelector('.main').style.paddingTop = `${head_height()}px`;
-    console.log('upd');
+
+    // AOS.js
+
 }
-
-//Анимированная прокрутка
-
-// var isScrolling = false;
-
-// window.addEventListener("scroll", throttleScroll, false);
-
-// function throttleScroll(e) {
-//     if (isScrolling == false) {
-//         window.requestAnimationFrame(function () {
-//             dealWithScrolling(e);
-//             isScrolling = false;
-//         });
-//     }
-//     isScrolling = true;
-// }
-
-// function dealWithScrolling(e) {
-//     console.log('scrol');
-//     // do epic stuff    
-// }
-
-
-
 
 // Запуск
 newsize();
+AOS.init({
+    // disable: true,
+    startEvent: 'DOMContentLoaded',
+    // offset: 50,
+    delay: 0,
+    duration: 400,
+    once: true
+});
 window.addEventListener('resize', function () {
     newsize();
 })
