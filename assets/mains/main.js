@@ -174,9 +174,7 @@ function newsize() {
 // Запуск
 newsize();
 AOS.init({
-    // disable: true,
     startEvent: 'DOMContentLoaded',
-    // offset: 50,
     delay: 0,
     duration: 400,
     once: true
