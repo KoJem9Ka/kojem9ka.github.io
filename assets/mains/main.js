@@ -1,6 +1,29 @@
 // Глобальные переменные
 const myHtml = document.querySelector('html');
 
+//Загрузка iframe'ов в последнюю очередь
+window.addEventListener('load', function () {
+    const loader = '<div class="loading_container"> <div class="loading_box"></div> </div>';
+
+    //Вставка youtube видео
+    const ytvideo = document.querySelectorAll('.ytvideo');
+    for (el of ytvideo) {
+        el.innerHTML = `${loader}
+        <iframe style="display: none;" class="ytvideo__inner" src="https://www.youtube.com/embed/${el.dataset.youtube}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    }
+    //Вставка яндекс-карты
+    document.querySelector('.yamap').innerHTML = `${loader}
+    <iframe style="display: none;" class="yamap ratio3_2" data-aos="fade-up" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`
+    //Событие конец загрузки фрейма
+    const iframes = document.querySelectorAll('iframe');
+    for (el of iframes) {
+        el.addEventListener('load', function () {
+            this.parentNode.querySelector('.loading_container').outerHTML = '';
+            this.setAttribute('style', '');
+        })
+    }
+})
+
 //Плавная навигация по сайту
 const scrollPos = () => window.pageYOffset || document.documentElement.scrollTop,
     head_height = () => document.querySelector('.header').clientHeight,
@@ -18,17 +41,6 @@ for (let anchor of anchors) {
         })
     })
 }
-
-// let subscribe_button = document.querySelectorAll('.subscribe');
-// for (elem of subscribe_button) {
-//     elem.addEventListener("click", function (event) {
-//         event.preventDefault();
-//         window.scrollTo({
-//             top: document.getElementById('contacts').offsetTop - head_height(),
-//             behavior: 'smooth'
-//         })
-//     })
-// }
 
 //Мобильная навигация
 ; (function () {
@@ -99,7 +111,6 @@ for (let anchor of anchors) {
         modal.classList.remove('hide');
         modal.classList.add('show');
 
-
         document.addEventListener("click", checkBackgroundClick);
         myHtml.style.overflow = 'hidden';
         mStatus = true;
@@ -115,31 +126,34 @@ for (let anchor of anchors) {
             document.removeEventListener('click', checkBackgroundClick);
             myHtml.style.overflow = 'auto';
             mStatus = false;
-
-            // if (this.dataset != undefined && this.dataset.close == 'subscribe') {
-            //     window.scrollTo({
-            //         top: document.getElementById('contacts').offsetTop,
-            //         behavior: 'smooth'
-            //     })
-            // }
         }
     }
 })();
 
 //Спойлеры
-let spo__head = document.querySelectorAll('.accordion__head');
-for (var i = 0; i < spo__head.length; i++) {
-    spo__head[i].addEventListener('click', function () {
-        // this.parentNode.classList.toggle('accordion__active');
+function accordionShow(elem) {
+    elem.classList.add('active');
+    const elemContent = elem.querySelector('.accordion__content');
+    elemContent.style.maxHeight = `${elemContent.scrollHeight}px`;
+}
 
-        if (this.parentNode.classList.contains('accordion__active')) {
-            this.parentNode.classList.remove('accordion__active');
-        }
+function accordionHide(elem) {
+    elem.classList.remove('active');
+    elem.querySelector('.accordion__content').style.maxHeight = 0;
+}
+
+let accordiones = document.querySelectorAll('.accordion');
+for (var i = 0; i < accordiones.length; i++) {
+
+    const cur_acc = accordiones[i];
+
+    cur_acc.querySelector('.accordion__head').addEventListener('click', function () {
+        if (cur_acc.classList.contains('active'))
+            accordionHide(cur_acc);
         else {
-            for (el of spo__head) {
-                el.parentNode.classList.remove('accordion__active');
-            }
-            this.parentNode.classList.add('accordion__active');
+            for (el of accordiones)
+                accordionHide(el);
+            accordionShow(cur_acc);
         }
     })
 }
@@ -167,8 +181,11 @@ function newsize() {
     //Фикс наезжания header на контент в.main
     document.querySelector('.main').style.paddingTop = `${head_height()}px`;
 
-    // AOS.js
-
+    // Обновление размера спойлера при изменении размера окна
+    for (el of accordiones) {
+        if (el.classList.contains('active'))
+            accordionShow(el);
+    }
 }
 
 // Запуск
