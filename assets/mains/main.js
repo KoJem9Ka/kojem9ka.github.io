@@ -3,26 +3,82 @@ const myHtml = document.querySelector('html');
 
 //Загрузка iframe'ов в последнюю очередь
 window.addEventListener('load', function () {
-    const loader = '<div class="loading_container"> <div class="loading_box"></div> </div>';
 
-    //Вставка youtube видео
-    const ytvideo = document.querySelectorAll('.ytvideo');
-    for (el of ytvideo) {
-        el.innerHTML = `${loader}
-        <iframe style="display: none;" class="ytvideo__inner" src="https://www.youtube.com/embed/${el.dataset.youtube}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+
+    var isScrolling = false;
+    function throttleScroll(e) {
+        if (isScrolling == false) {
+            window.requestAnimationFrame(function () {
+                scrolling(e);
+                isScrolling = false;
+            });
+        }
+        isScrolling = true;
     }
-    //Вставка яндекс-карты
-    document.querySelector('.yamap').innerHTML = `${loader}
-    <iframe style="display: none;" class="yamap ratio3_2" data-aos="fade-up" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`
-    //Событие конец загрузки фрейма
-    const iframes = document.querySelectorAll('iframe');
-    for (el of iframes) {
-        el.addEventListener('load', function () {
-            this.parentNode.querySelector('.loading_container').outerHTML = '';
-            this.setAttribute('style', '');
-        })
+    window.addEventListener("scroll", throttleScroll, false);
+
+    function isPartiallyVisible(elem) {
+        var el = elem.getBoundingClientRect();
+
+        var top = el.top;
+        var bottom = el.bottom;
+        var height = el.height;
+
+        return ((top + height >= 0) && (height + window.innerHeight >= bottom));
     }
+
+
+    const loader = '<div class="loading_container"> <div class="loading_box"></div> </div>';
+    let lazyElements = document.querySelectorAll('.ytvideo,.yamap');
+    for (el of lazyElements) el.classList.add('lazyElem');
+
+    function scrolling(e) {
+
+        for (el of lazyElements) {
+            if (isPartiallyVisible(el)) {
+                el.classList.remove('lazyElem');
+                let pasting = loader;
+                if (el.classList.contains('ytvideo'))
+                    pasting += `<iframe style="display: none;" class="ytvideo__inner" src="https://www.youtube.com/embed/${el.dataset.youtube}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                else if (el.classList.contains('yamap'))
+                    pasting += `<iframe style="display: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`;
+                el.innerHTML = pasting;
+                el.querySelector('iframe').addEventListener('load', function () {
+                    this.parentNode.querySelector('.loading_container').outerHTML = '';
+                    this.setAttribute('style', '');
+                })
+                lazyElements = document.querySelectorAll('.lazyElem');
+            }
+        }
+    }
+
+
+
+
+
+
+    // //Вставка youtube видео
+    // const ytvideo = document.querySelectorAll('.ytvideo');
+    // for (el of ytvideo) {
+    //     el.innerHTML = `${loader}
+    //     <iframe style="display: none;" class="ytvideo__inner" src="https://www.youtube.com/embed/${el.dataset.youtube}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    // }
+    // //Вставка яндекс-карты
+    // document.querySelector('.yamap').innerHTML = `${loader}
+    // <iframe style="display: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`
+
+    // //Событие конец загрузки фрейма
+    // const iframes = document.querySelectorAll('iframe');
+    // for (el of iframes) {
+    //     el.addEventListener('load', function () {
+    //         this.parentNode.querySelector('.loading_container').outerHTML = '';
+    //         this.setAttribute('style', '');
+    //     })
+    // }
 })
+
+
+
 
 //Плавная навигация по сайту
 const scrollPos = () => window.pageYOffset || document.documentElement.scrollTop,

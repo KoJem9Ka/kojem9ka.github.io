@@ -7,7 +7,6 @@
 	--vk-color                 : #2787F5;
 	--dark-color               : #2C2C2C;
 	--card-shadow              : 0 1rem 5rem rgba(0, 0, 0, 0.1);
-	--opsans-font              : "Open Sans", sans-serif;
 	--rubik-font               : "Rubik", sans-serif;
 }
 
@@ -177,33 +176,71 @@ a {
 /* LOADING */
 
 .loading_container {
-	width: 100%;
-	height: 100%;
-	display: flex;
+	width     : 100%;
+	height    : 100%;
+	display   : -webkit-box;
+	display   : -webkit-flex;
+	display   : -ms-flexbox;
+	display   : flex;
 }
 
 .loading_box {
-	margin: auto;
-	width: 1.4rem;
-	height: 1.4rem;
-	border-radius: 100%;
-	box-shadow: 15px 15px rgb(79,77,73), -15px 15px rgb(223,223,223), -15px -15px rgb(79,77,73), 15px -15px rgb(223,223,223);
-	animation: loading_anim ease infinite 2s;
+	margin                  : auto;
+	width                   : 1.4rem;
+	height                  : 1.4rem;
+	-webkit-border-radius   : 100%;
+	border-radius           : 100%;
+	-webkit-box-shadow      : 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223);
+	box-shadow              : 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223);
+	-webkit-animation       : loading_anim ease infinite 2s;
+	animation               : loading_anim ease infinite 2s;
+}
+
+@-webkit-keyframes loading_anim {
+
+	0%,
+	100% {
+		-webkit-box-shadow   : 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223);
+		box-shadow           : 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223);
+	}
+
+	25% {
+		-webkit-box-shadow   : -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223), 15px 15px rgb(79, 77, 73);
+		box-shadow           : -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223), 15px 15px rgb(79, 77, 73);
+	}
+
+	50% {
+		-webkit-box-shadow   : -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223), 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223);
+		box-shadow           : -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223), 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223);
+	}
+
+	75% {
+		-webkit-box-shadow   : 15px -15px #dfdfdf, 15px 15px #4f4d49, -15px 15px #dfdfdf, -15px -15px #4f4d49;
+		box-shadow           : 15px -15px #dfdfdf, 15px 15px #4f4d49, -15px 15px #dfdfdf, -15px -15px #4f4d49;
+	}
 }
 
 @keyframes loading_anim {
+
 	0%,
 	100% {
-		box-shadow: 15px 15px rgb(79,77,73), -15px 15px rgb(223,223,223), -15px -15px rgb(79,77,73), 15px -15px rgb(223,223,223);
+		-webkit-box-shadow   : 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223);
+		box-shadow           : 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223);
 	}
+
 	25% {
-		box-shadow: -15px 15px rgb(223,223,223), -15px -15px rgb(79,77,73), 15px -15px rgb(223,223,223), 15px 15px rgb(79,77,73);
+		-webkit-box-shadow   : -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223), 15px 15px rgb(79, 77, 73);
+		box-shadow           : -15px 15px rgb(223, 223, 223), -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223), 15px 15px rgb(79, 77, 73);
 	}
+
 	50% {
-		box-shadow: -15px -15px rgb(79,77,73), 15px -15px rgb(223,223,223), 15px 15px rgb(79,77,73), -15px 15px rgb(223,223,223);
+		-webkit-box-shadow   : -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223), 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223);
+		box-shadow           : -15px -15px rgb(79, 77, 73), 15px -15px rgb(223, 223, 223), 15px 15px rgb(79, 77, 73), -15px 15px rgb(223, 223, 223);
 	}
+
 	75% {
-		box-shadow: 15px -15px #dfdfdf, 15px 15px #4f4d49, -15px 15px #dfdfdf, -15px -15px #4f4d49;
+		-webkit-box-shadow   : 15px -15px #dfdfdf, 15px 15px #4f4d49, -15px 15px #dfdfdf, -15px -15px #4f4d49;
+		box-shadow           : 15px -15px #dfdfdf, 15px 15px #4f4d49, -15px 15px #dfdfdf, -15px -15px #4f4d49;
 	}
 }
 
@@ -897,7 +934,7 @@ section {
 	content               : '';
 	position              : fixed;
 	opacity               : 0.2;
-	background            : url(../courses/backgr.svg);
+	background            : url(../courses/courses_backgr.gif);
 	background-size       : contain;
 	top                   : 0;
 	right                 : -450vw;
@@ -1604,6 +1641,7 @@ section {
 .yamap {
 	-webkit-border-radius   : 2rem;
 	border-radius           : 2rem;
+	overflow                : hidden;
 	width                   : 100%;
 }
 
