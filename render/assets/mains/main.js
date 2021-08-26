@@ -1,1 +1,262 @@
-function accordionShow(e){e.classList.add("active");const t=e.querySelector(".accordion__content");t.style.maxHeight=`${t.scrollHeight}px`}function accordionHide(e){e.classList.remove("active"),e.querySelector(".accordion__content").style.maxHeight=0}function newsize(){for(elem of ratio16_9){let e=elem.clientWidth;elem.style.height=`${9*e/16}px`}for(elem of ratio3_2){let e=elem.clientWidth;elem.style.height=`${2*e/3}px`}for(el of(document.querySelector(".main").style.paddingTop=`${head_height()}px`,accordiones))el.classList.contains("active")&&accordionShow(el)}const myHtml=document.querySelector("html");window.addEventListener("load",function(){const e='<div class="loading_container"> <div class="loading_box"></div> </div>',t=document.querySelectorAll(".ytvideo");for(el of t)el.innerHTML=`${e}\n        <iframe style="display: none;" class="ytvideo__inner" src="https://www.youtube.com/embed/${el.dataset.youtube}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;document.querySelector(".yamap").innerHTML=`${e}\n    <iframe style="display: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`;const o=document.querySelectorAll("iframe");for(el of o)el.addEventListener("load",function(){this.parentNode.querySelector(".loading_container").outerHTML="",this.setAttribute("style","")})});const scrollPos=()=>window.pageYOffset||document.documentElement.scrollTop,head_height=()=>document.querySelector(".header").clientHeight,anchors=document.querySelectorAll('a[href^="#"]');for(let e of anchors)e.addEventListener("click",function(t){t.preventDefault();const o=e.getAttribute("href");let n=document.getElementById(o.substr(1,o.length-1));window.scrollTo({top:n.offsetTop-head_height(),behavior:"smooth"})});(function(){function e(){o.classList.remove("show"),o.classList.add("hide"),myHtml.style.overflow="auto",window.removeEventListener("orientationchange",e),window.removeEventListener("resize",e)}const t=document.querySelector(".header__modal_menu"),o=document.querySelector(".mobile_modal_nav"),n=document.querySelectorAll(".mobile_modal_nav a,.mobile_modal_nav__close");t.addEventListener("click",function(){o.classList.remove("hide"),o.classList.add("show"),myHtml.style.overflow="hidden",window.addEventListener("orientationchange",e),window.addEventListener("resize",e)});for(let t of n)t.addEventListener("click",e)})(),function(){function e(e){e.target.classList.contains("course_modal")&&o(e)}function t(t){t.scrollTo({top:0,behavior:"smooth"}),t.setAttribute("style",""),t.classList.remove("hide"),t.classList.add("show"),document.addEventListener("click",e),myHtml.style.overflow="hidden",l=!0}function o(t){if(l&&("keydown"!=t.type||27===t.keyCode)){for(let e of c)e.classList.remove("show"),e.classList.add("hide");document.removeEventListener("click",e),myHtml.style.overflow="auto",l=!1}}const n=document.querySelectorAll("[data-modal]"),c=document.querySelectorAll(".course_modal"),i=document.querySelectorAll("[data-close]");if(0==n.length)return;let l=!1;for(let e of n)e.addEventListener("click",function(o){t(document.getElementById(e.getAttribute("data-modal")))});for(let e of i)e.addEventListener("click",o);document.addEventListener("keydown",o)}();let accordiones=document.querySelectorAll(".accordion");for(var i=0;i<accordiones.length;i++){const e=accordiones[i];e.querySelector(".accordion__head").addEventListener("click",function(){if(e.classList.contains("active"))accordionHide(e);else{for(el of accordiones)accordionHide(el);accordionShow(e)}})}let ratio16_9=document.querySelectorAll(".ratio16_9"),ratio3_2=document.querySelectorAll(".ratio3_2"),we_do__items=document.querySelectorAll(".wedo__item>p");newsize(),AOS.init({startEvent:"DOMContentLoaded",delay:0,duration:400,once:!0}),window.addEventListener("resize",function(){newsize()});
+// Глобальные переменные
+const myHtml = document.querySelector('html');
+
+//Загрузка iframe'ов в последнюю очередь
+window.addEventListener('load', function () {
+
+
+    var isScrolling = false;
+    function throttleScroll(e) {
+        if (isScrolling == false) {
+            window.requestAnimationFrame(function () {
+                scrolling(e);
+                isScrolling = false;
+            });
+        }
+        isScrolling = true;
+    }
+    window.addEventListener("scroll", throttleScroll, false);
+
+    function isWillVisible(elem) {
+        var el = elem.getBoundingClientRect();
+
+
+        // console.log('==============================');
+        // console.log(el.height);
+        // console.log(window.innerHeight - el.top);
+
+        // var top = el.top;
+        // var bottom = el.bottom;
+        // var height = el.height;
+
+        // return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+        return (window.innerHeight - el.top > -500)
+    }
+
+
+    const loader = '<div class="loading_container"> <div class="loading_box"></div> </div>';
+    let lazyElements = document.querySelectorAll('.ytvideo,.yamap');
+    for (el of lazyElements) el.classList.add('lazyElem');
+
+    function scrolling(e) {
+
+        for (el of lazyElements) {
+            if (isWillVisible(el)) {
+                el.classList.remove('lazyElem');
+                let pasting = loader;
+                if (el.classList.contains('ytvideo'))
+                    pasting += `<iframe style="display: none;" class="ytvideo__inner" src="https://www.youtube.com/embed/${el.dataset.youtube}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                else if (el.classList.contains('yamap'))
+                    pasting += `<iframe style="display: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`;
+                el.innerHTML = pasting;
+                el.querySelector('iframe').addEventListener('load', function () {
+                    this.parentNode.querySelector('.loading_container').outerHTML = '';
+                    this.setAttribute('style', '');
+                })
+                lazyElements = document.querySelectorAll('.lazyElem');
+            }
+        }
+    }
+
+
+
+
+
+
+    // //Вставка youtube видео
+    // const ytvideo = document.querySelectorAll('.ytvideo');
+    // for (el of ytvideo) {
+    //     el.innerHTML = `${loader}
+    //     <iframe style="display: none;" class="ytvideo__inner" src="https://www.youtube.com/embed/${el.dataset.youtube}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    // }
+    // //Вставка яндекс-карты
+    // document.querySelector('.yamap').innerHTML = `${loader}
+    // <iframe style="display: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`
+
+    // //Событие конец загрузки фрейма
+    // const iframes = document.querySelectorAll('iframe');
+    // for (el of iframes) {
+    //     el.addEventListener('load', function () {
+    //         this.parentNode.querySelector('.loading_container').outerHTML = '';
+    //         this.setAttribute('style', '');
+    //     })
+    // }
+})
+
+
+
+
+//Плавная навигация по сайту
+const scrollPos = () => window.pageYOffset || document.documentElement.scrollTop,
+    head_height = () => document.querySelector('.header').clientHeight,
+    anchors = document.querySelectorAll('a[href^="#"]');
+
+for (let anchor of anchors) {
+    anchor.addEventListener("click", function (event) {
+        event.preventDefault();
+        const blockID = anchor.getAttribute('href')
+        let block = document.getElementById(blockID.substr(1, blockID.length - 1)); //#hid2
+
+        window.scrollTo({
+            top: block.offsetTop - head_height(),
+            behavior: 'smooth'
+        })
+    })
+}
+
+//Мобильная навигация
+; (function () {
+
+    const navOpen = document.querySelector('.header__modal_menu'),
+        navElem = document.querySelector('.mobile_modal_nav'),
+        navHide = document.querySelectorAll('.mobile_modal_nav a,.mobile_modal_nav__close');
+
+    navOpen.addEventListener('click', function () {
+        navElem.classList.remove('hide');
+        navElem.classList.add('show');
+        myHtml.style.overflow = 'hidden';
+        window.addEventListener('orientationchange', navClose);
+        window.addEventListener('resize', navClose);
+    });
+
+    function navClose() {
+        navElem.classList.remove('show');
+        navElem.classList.add('hide');
+        myHtml.style.overflow = 'auto';
+        window.removeEventListener('orientationchange', navClose);
+        window.removeEventListener('resize', navClose);
+    }
+
+    for (let el of navHide)
+        el.addEventListener('click', navClose);
+})();
+
+//Подробнее о курсе
+; (function () {
+
+    const mOpen = document.querySelectorAll('[data-modal]'),
+        modals = document.querySelectorAll('.course_modal'),
+        mClose = document.querySelectorAll('[data-close]');
+    let mScroll = 0;
+
+    if (mOpen.length == 0) return;
+    let mStatus = false;
+
+
+    for (let el of mOpen) {
+        el.addEventListener('click', function (e) {
+            let modal = document.getElementById(el.getAttribute('data-modal'));
+
+            modalShow(modal);
+        });
+    }
+
+
+    for (let el of mClose) {
+        el.addEventListener('click', modalClose);
+    }
+    document.addEventListener('keydown', modalClose);
+
+
+    function checkBackgroundClick(event) {
+        if (event.target.classList.contains('course_modal'))
+            modalClose(event);
+    }
+
+    function modalShow(modal) {
+        modal.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+        modal.setAttribute('style', '');
+        modal.classList.remove('hide');
+        modal.classList.add('show');
+
+        document.addEventListener("click", checkBackgroundClick);
+        myHtml.style.overflow = 'hidden';
+        mStatus = true;
+    }
+
+    function modalClose(event) {
+        if (mStatus && (event.type != 'keydown' || event.keyCode === 27)) {
+            for (let modal of modals) {
+                modal.classList.remove('show');
+                modal.classList.add('hide');
+            }
+
+            document.removeEventListener('click', checkBackgroundClick);
+            myHtml.style.overflow = 'auto';
+            mStatus = false;
+        }
+    }
+})();
+
+//Спойлеры
+function accordionShow(elem) {
+    elem.classList.add('active');
+    const elemContent = elem.querySelector('.accordion__content');
+    elemContent.style.maxHeight = `${elemContent.scrollHeight}px`;
+}
+
+function accordionHide(elem) {
+    elem.classList.remove('active');
+    elem.querySelector('.accordion__content').style.maxHeight = 0;
+}
+
+let accordiones = document.querySelectorAll('.accordion');
+for (var i = 0; i < accordiones.length; i++) {
+
+    const cur_acc = accordiones[i];
+
+    cur_acc.querySelector('.accordion__head').addEventListener('click', function () {
+        if (cur_acc.classList.contains('active'))
+            accordionHide(cur_acc);
+        else {
+            for (el of accordiones)
+                accordionHide(el);
+            accordionShow(cur_acc);
+        }
+    })
+}
+
+//Соотношение сторон элементов
+let ratio16_9 = document.querySelectorAll('.ratio16_9'),
+    ratio3_2 = document.querySelectorAll('.ratio3_2')
+
+//выравнивание тексте к левому краю в We Do
+let we_do__items = document.querySelectorAll('.wedo__item>p');
+
+function newsize() {
+    //Соотношение сторон 16:9
+    for (elem of ratio16_9) {
+        let widt = elem.clientWidth;
+        // elem.setAttribute("height", widt * 9 / 16);
+        elem.style.height = `${widt * 9 / 16}px`;
+    }
+    //Соотношение сторон 3:2
+    for (elem of ratio3_2) {
+        let widt = elem.clientWidth;
+        // elem.setAttribute("height", widt * 9 / 16);
+        elem.style.height = `${widt * 2 / 3}px`;
+    }
+    //Фикс наезжания header на контент в.main
+    document.querySelector('.main').style.paddingTop = `${head_height()}px`;
+
+    // Обновление размера спойлера при изменении размера окна
+    for (el of accordiones) {
+        if (el.classList.contains('active'))
+            accordionShow(el);
+    }
+}
+
+// Запуск
+newsize();
+AOS.init({
+    startEvent: 'DOMContentLoaded',
+    delay: 0,
+    duration: 400,
+    once: true
+});
+window.addEventListener('resize', function () {
+    newsize();
+})

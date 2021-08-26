@@ -332,6 +332,7 @@ section {
 	margin                : 0 0 calc(var(--section-size) * 2) 0;
 	margin-top            : auto;
 	width                 : 9em;
+	height: auto;
 }
 
 .mobile_modal_nav__inner>a {
@@ -644,7 +645,8 @@ section {
 }
 
 .main__right {
-	width   : 35%;
+	width    : 35%;
+	height   : auto;
 }
 
 .main__line {
@@ -763,11 +765,12 @@ section {
 }
 
 .whoweare__img {
-	-ms-flex-positive   : 1;
-	-webkit-box-flex    : 1;
 	-webkit-flex-grow   : 1;
+	-webkit-box-flex    : 1;
+	-ms-flex-positive   : 1;
 	flex-grow           : 1;
 	width               : 35%;
+	height              : auto;
 }
 
 .whoweare__text {

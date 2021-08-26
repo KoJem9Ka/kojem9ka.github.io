@@ -17,14 +17,20 @@ window.addEventListener('load', function () {
     }
     window.addEventListener("scroll", throttleScroll, false);
 
-    function isPartiallyVisible(elem) {
+    function isWillVisible(elem) {
         var el = elem.getBoundingClientRect();
 
-        var top = el.top;
-        var bottom = el.bottom;
-        var height = el.height;
 
-        return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+        // console.log('==============================');
+        // console.log(el.height);
+        // console.log(window.innerHeight - el.top);
+
+        // var top = el.top;
+        // var bottom = el.bottom;
+        // var height = el.height;
+
+        // return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+        return (window.innerHeight - el.top > -500)
     }
 
 
@@ -35,7 +41,7 @@ window.addEventListener('load', function () {
     function scrolling(e) {
 
         for (el of lazyElements) {
-            if (isPartiallyVisible(el)) {
+            if (isWillVisible(el)) {
                 el.classList.remove('lazyElem');
                 let pasting = loader;
                 if (el.classList.contains('ytvideo'))
@@ -123,7 +129,6 @@ for (let anchor of anchors) {
 
     for (let el of navHide)
         el.addEventListener('click', navClose);
-
 })();
 
 //Подробнее о курсе
