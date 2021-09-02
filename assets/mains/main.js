@@ -72,7 +72,8 @@ const subscr_iframes = document.querySelectorAll('.subscribe .yamap, .subscribe 
 let subscr_iframes_needload = true;
 
 for (el of subscr_open_btns)
-    el.addEventListener('click', function () {
+    el.addEventListener('click', function (event) {
+        event.preventDefault();
         myHtml.style.overflow = 'hidden';
         subscribe.classList.remove('hide');
         subscribe.classList.add('show');

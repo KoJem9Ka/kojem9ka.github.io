@@ -1801,8 +1801,8 @@ footer p:nth-child(2) {
 @-webkit-keyframes slideIn {
 	from {
 		opacity             : 0;
-		-webkit-transform   : translate(0, 10%);
-		transform           : translate(0, 10%);
+		-webkit-transform   : translate(0, 50px);
+		transform           : translate(0, 50px);
 	}
 
 	to {
@@ -1815,8 +1815,8 @@ footer p:nth-child(2) {
 @keyframes slideIn {
 	from {
 		opacity             : 0;
-		-webkit-transform   : translate(0, 10%);
-		transform           : translate(0, 10%);
+		-webkit-transform   : translate(0, 50px);
+		transform           : translate(0, 50px);
 	}
 
 	to {
@@ -1835,8 +1835,8 @@ footer p:nth-child(2) {
 
 	to {
 		opacity             : 0;
-		-webkit-transform   : translate(0, -10%);
-		transform           : translate(0, -10%);
+		-webkit-transform   : translate(0, -50px);
+		transform           : translate(0, -50px);
 	}
 }
 
@@ -1849,8 +1849,8 @@ footer p:nth-child(2) {
 
 	to {
 		opacity             : 0;
-		-webkit-transform   : translate(0, -10%);
-		transform           : translate(0, -10%);
+		-webkit-transform   : translate(0, -50px);
+		transform           : translate(0, -50px);
 	}
 }
 
