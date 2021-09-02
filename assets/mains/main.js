@@ -71,7 +71,31 @@ const subscribe = document.querySelector('.subscribe'),
 const subscr_iframes = document.querySelectorAll('.subscribe .yamap, .subscribe .subscribe__frame');
 let subscr_iframes_needload = true;
 
-for (el of subscr_open_btns)
+function SubscrIframesLoad() {
+    for (el of subscr_open_btns)
+        el.removeEventListener('mouseenter', SubscrIframesLoad);
+
+    if (subscr_iframes_needload) {
+        subscr_iframes_needload = false;
+
+        for (el of subscr_iframes) {
+            let pasting = loader;
+            if (el.classList.contains('yamap'))
+                pasting += `<iframe style="display: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`;
+            else if (el.classList.contains('subscribe__frame'))
+                pasting += `<iframe id="goglform" src="https://docs.google.com/forms/d/e/1FAIpQLSdK4ZXc_llgDowq7SpYI2vUJSZFdGU6ymmBDVHZep6hm502pQ/viewform?embedded=true"></iframe>`;
+
+            el.innerHTML = pasting;
+
+            el.querySelector('iframe').addEventListener('load', function () {
+                this.parentNode.querySelector('.loading_container').outerHTML = '';
+                this.setAttribute('style', '');
+            })
+        }
+    }
+}
+
+for (el of subscr_open_btns) {
     el.addEventListener('click', function (event) {
         event.preventDefault();
         myHtml.style.overflow = 'hidden';
@@ -85,25 +109,15 @@ for (el of subscr_open_btns)
         //Подгрузка iframe'ов
         if (subscr_iframes_needload) {
             subscr_iframes_needload = false;
-
-            for (el of subscr_iframes) {
-                let pasting = loader;
-                if (el.classList.contains('yamap'))
-                    pasting += `<iframe style="display: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`;
-                else if (el.classList.contains('subscribe__frame'))
-                    pasting += `<iframe id="goglform" src="https://docs.google.com/forms/d/e/1FAIpQLSdK4ZXc_llgDowq7SpYI2vUJSZFdGU6ymmBDVHZep6hm502pQ/viewform?embedded=true"></iframe>`;
-
-                el.innerHTML = pasting;
-
-                el.querySelector('iframe').addEventListener('load', function () {
-                    this.parentNode.querySelector('.loading_container').outerHTML = '';
-                    this.setAttribute('style', '');
-                })
-            }
+            SubscrIframesLoad();
         }
 
         newsize();
     });
+
+    //Подгрузить iframe'ы если мышка над кнопкой
+    el.addEventListener('mouseenter', SubscrIframesLoad);
+}
 
 subscr_close_btn.addEventListener('click', function () {
     myHtml.style.overflow = 'auto';
