@@ -1,9 +1,9 @@
 // Глобальные переменные
 const myHtml = document.querySelector('html');
 
+//Прокрутка фона курсов только при его видимости
 //Загрузка iframe'ов в последнюю очередь
 window.addEventListener('load', function () {
-
 
     var isScrolling = false;
     function throttleScroll(e) {
@@ -22,13 +22,27 @@ window.addEventListener('load', function () {
         return (window.innerHeight - el.top > -500)
     }
 
+    function isPartiallyVisible(elem) {
+        var el = elem.getBoundingClientRect();
+        return ((el.top + el.height >= 0) && (el.height + window.innerHeight >= el.bottom));
+    }
 
+    //iframes
     const loader = '<div class="loading_container"> <div class="loading_box"></div> </div>';
     let lazyElements = document.querySelectorAll('.ytvideo,.yamap');
     for (el of lazyElements) el.classList.add('lazyElem');
-
+    //фон курсов
+    const courses = document.querySelector('#courses');
+    //функция при скроллинге
     function scrolling() {
-
+        //фон курсов
+        if (isPartiallyVisible(courses)) {
+            if (courses.classList.contains('disbl'))
+                courses.classList.remove('disbl');
+        } else
+            if (!courses.classList.contains('disbl'))
+                courses.classList.add('disbl');
+        //iframes
         for (el of lazyElements) {
             if (isWillVisible(el)) {
                 el.classList.remove('lazyElem');

@@ -1,9 +1,10 @@
 // Глобальные переменные
 const myHtml = document.querySelector('html');
+const loader = `<div class="loading_container"> <div class="loading_box"></div> </div>`;
 
+//Прокрутка фона курсов только при его видимости
 //Загрузка iframe'ов в последнюю очередь
 window.addEventListener('load', function () {
-
 
     var isScrolling = false;
     function throttleScroll(e) {
@@ -22,13 +23,26 @@ window.addEventListener('load', function () {
         return (window.innerHeight - el.top > -500)
     }
 
+    function isPartiallyVisible(elem) {
+        var el = elem.getBoundingClientRect();
+        return ((el.top + el.height >= 0) && (el.height + window.innerHeight >= el.bottom));
+    }
 
-    const loader = '<div class="loading_container"> <div class="loading_box"></div> </div>';
-    let lazyElements = document.querySelectorAll('.ytvideo,.yamap');
+    //iframes
+    let lazyElements = document.querySelectorAll('.ytvideo,.contacts .yamap');
     for (el of lazyElements) el.classList.add('lazyElem');
-
+    //фон курсов
+    const courses = document.querySelector('#courses');
+    //функция при скроллинге
     function scrolling() {
-
+        //фон курсов
+        if (isPartiallyVisible(courses)) {
+            if (courses.classList.contains('disbl'))
+                courses.classList.remove('disbl');
+        } else
+            if (!courses.classList.contains('disbl'))
+                courses.classList.add('disbl');
+        //iframes
         for (el of lazyElements) {
             if (isWillVisible(el)) {
                 el.classList.remove('lazyElem');
@@ -50,7 +64,51 @@ window.addEventListener('load', function () {
 })
 
 
+//Открытие окна формы заявки
+const subscribe = document.querySelector('.subscribe'),
+    subscr_open_btns = document.querySelectorAll('[data-subscr_btn]'),
+    subscr_close_btn = document.querySelector('.subscribe__close');
+const subscr_iframes = document.querySelectorAll('.subscribe .yamap, .subscribe .subscribe__frame');
+let subscr_iframes_needload = true;
 
+for (el of subscr_open_btns)
+    el.addEventListener('click', function () {
+        myHtml.style.overflow = 'hidden';
+        subscribe.classList.remove('hide');
+        subscribe.classList.add('show');
+        subscribe.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+
+        //Подгрузка iframe'ов
+        if (subscr_iframes_needload) {
+            subscr_iframes_needload = false;
+
+            for (el of subscr_iframes) {
+                let pasting = loader;
+                if (el.classList.contains('yamap'))
+                    pasting += `<iframe style="display: none;" src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad052e78156846c8a92d869fcec3cf12dc4b6c8f0663fa9493b0f392d0be683ee&amp"></iframe>`;
+                else if (el.classList.contains('subscribe__frame'))
+                    pasting += `<iframe id="goglform" src="https://docs.google.com/forms/d/e/1FAIpQLSdK4ZXc_llgDowq7SpYI2vUJSZFdGU6ymmBDVHZep6hm502pQ/viewform?embedded=true"></iframe>`;
+
+                el.innerHTML = pasting;
+
+                el.querySelector('iframe').addEventListener('load', function () {
+                    this.parentNode.querySelector('.loading_container').outerHTML = '';
+                    this.setAttribute('style', '');
+                })
+            }
+        }
+
+        newsize();
+    });
+
+subscr_close_btn.addEventListener('click', function () {
+    myHtml.style.overflow = 'auto';
+    subscribe.classList.remove('show');
+    subscribe.classList.add('hide');
+});
 
 //Плавная навигация по сайту
 const scrollPos = () => window.pageYOffset || document.documentElement.scrollTop,
@@ -187,7 +245,9 @@ for (var i = 0; i < accordiones.length; i++) {
 
 //Соотношение сторон элементов
 let ratio16_9 = document.querySelectorAll('.ratio16_9'),
-    ratio3_2 = document.querySelectorAll('.ratio3_2')
+    ratio3_2 = document.querySelectorAll('.ratio3_2');
+
+console.log(ratio3_2);
 
 //выравнивание тексте к левому краю в We Do
 let we_do__items = document.querySelectorAll('.wedo__item>p');
