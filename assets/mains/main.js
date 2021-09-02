@@ -2,6 +2,17 @@
 const myHtml = document.querySelector('html');
 const loader = `<div class="loading_container"> <div class="loading_box"></div> </div>`;
 
+const kazakov = document.querySelector('[src="assets/team/Kazakov.jpg"]');
+kazakov.style.pointerEvents = 'auto';
+console.log(kazakov);
+
+kazakov.addEventListener('click', function () {
+    let cur = this.getAttribute('src').indexOf('2') != -1;
+    console.log(cur);
+    if (cur) this.setAttribute('src', 'assets/team/Kazakov.jpg')
+    else this.setAttribute('src', 'assets/team/Kazakov2.jpg')
+})
+
 //Прокрутка фона курсов только при его видимости
 //Загрузка iframe'ов в последнюю очередь
 window.addEventListener('load', function () {
