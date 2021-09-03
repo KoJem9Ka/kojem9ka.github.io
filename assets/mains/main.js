@@ -2,13 +2,21 @@
 const myHtml = document.querySelector('html');
 const loader = `<div class="loading_container"> <div class="loading_box"></div> </div>`;
 
-const kazakov = document.querySelector('[src="assets/team/Kazakov.jpg"]');
-kazakov.style.pointerEvents = 'auto';
-kazakov.addEventListener('click', function () {
-    let cur = this.getAttribute('src').indexOf('2') != -1;
-    if (cur) this.setAttribute('src', 'assets/team/Kazakov.jpg')
-    else this.setAttribute('src', 'assets/team/Kazakov2.jpg')
-})
+//yametrika
+const metrika_subscribe = document.querySelectorAll('[data-subscr_btn]'),
+metrika_course_more = document.querySelectorAll('[data-modal]');
+
+//событие записаться
+for (el of metrika_subscribe)
+    el.addEventListener('click', function () {
+        ym(84547264, 'reachGoal', 'metrika_subscribe');
+    })
+//Событие подробнее о курсе
+for (el of metrika_course_more)
+    el.addEventListener('click', function () {
+        ym(84547264, 'reachGoal', 'metrika_course_more');
+    })
+
 
 //Прокрутка фона курсов только при его видимости
 //Загрузка iframe'ов в последнюю очередь
