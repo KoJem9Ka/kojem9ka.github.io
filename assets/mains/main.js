@@ -4,11 +4,8 @@ const loader = `<div class="loading_container"> <div class="loading_box"></div> 
 
 const kazakov = document.querySelector('[src="assets/team/Kazakov.jpg"]');
 kazakov.style.pointerEvents = 'auto';
-console.log(kazakov);
-
 kazakov.addEventListener('click', function () {
     let cur = this.getAttribute('src').indexOf('2') != -1;
-    console.log(cur);
     if (cur) this.setAttribute('src', 'assets/team/Kazakov.jpg')
     else this.setAttribute('src', 'assets/team/Kazakov2.jpg')
 })
@@ -272,8 +269,6 @@ for (var i = 0; i < accordiones.length; i++) {
 //Соотношение сторон элементов
 let ratio16_9 = document.querySelectorAll('.ratio16_9'),
     ratio3_2 = document.querySelectorAll('.ratio3_2');
-
-console.log(ratio3_2);
 
 //выравнивание тексте к левому краю в We Do
 let we_do__items = document.querySelectorAll('.wedo__item>p');
